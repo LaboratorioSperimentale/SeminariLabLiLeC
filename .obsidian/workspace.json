@@ -1,0 +1,235 @@
+{
+  "main": {
+    "id": "8f60cd85e3b17ece",
+    "type": "split",
+    "children": [
+      {
+        "id": "0b69ccd4c777f946",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "43bd43b41a9e1030",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README-nonpub.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README-nonpub"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5a9ded2ff4c4f467",
+    "type": "split",
+    "children": [
+      {
+        "id": "ba0365ee51e253a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a90e37169c0ae90d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "79c051a01d28a016",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#ob/corpora/l2",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2eb83a64c1285b21",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bcb2e2e5c306f35b",
+    "type": "split",
+    "children": [
+      {
+        "id": "2297036f9854beff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "63374f44b71415f4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "scripts-nonpub/generate_tag-sections.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for generate_tag-sections"
+            }
+          },
+          {
+            "id": "f69bc4687635c1b3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "2e56901795f5a568",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "73a1160d9218329f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "0789c9b3a755ac9d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README-nonpub.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README-nonpub"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "vscode-editor:Create Code File": false
+    }
+  },
+  "active": "43bd43b41a9e1030",
+  "lastOpenFiles": [
+    "quartz-site/quartz-4/public/tag-index-og-image.webp",
+    "quartz-site/quartz-4/public/index-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/uno-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/tre-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/tre+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/due-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/due+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Lista-Seminari/Valutazione-formativa-og-image.webp",
+    "quartz-site/quartz-4/public/Lista-Seminari/UD-per-Corpora-L2-og-image.webp",
+    "quartz-site/quartz-4/public/tags/index.html",
+    "quartz-site/quartz-4/public/tag-index.html",
+    "quartz-site/quartz-4/public/index.html",
+    "quartz-site/quartz-4/public/postscript.js",
+    "quartz-site/quartz-4/public/prescript.js",
+    "quartz-site/quartz-4/public/index.css",
+    "quartz-site/quartz-4/public/tags/ob/valutazione/formativa.html",
+    "quartz-site/quartz-4/public/tags/ob/corpora/l2.html",
+    "quartz-site/quartz-4/public/tags/ob/animali/mammals.html",
+    "quartz-site/quartz-4/public/tags/ob/valutazione.html",
+    "quartz-site/quartz-4/public/static/og-image.png",
+    "quartz-site/quartz-4/public/static/icon.png",
+    "tag-index-source-nonpub.md",
+    "content/tag-index.md",
+    "content/tag-index-source-nonpub.md",
+    "content/index.md",
+    "content/Topics/due+uno.md",
+    "content/Topics/due.md",
+    "scripts-nonpub/generate_tag-sections.md",
+    "content/tag-definitions-nonpub.md",
+    "fil-direcotory.md",
+    "README-nonpub.md",
+    "TTP/uno/index.md",
+    "TTP/uno/UD-per-Corpora-L2.md",
+    "TTP/uno/Lessico-e-ripetizione.md",
+    "TTP/tre+uno/index.md",
+    "TTP/tre+uno/Lessico-e-ripetizione.md",
+    "TTP/tre/index.md",
+    "TTP/tre/Lessico-e-ripetizione.md",
+    "TTP/due+uno/UD-per-Corpora-L2.md",
+    "TTP/due+uno/index.md",
+    "TTP/due/index.md",
+    "TTP/due/Valutazione-formativa.md",
+    "TTP/due/UD-per-Corpora-L2.md",
+    "quartz-site/quartz-4/node_modules/@img/sharp-libvips-linuxmusl-x64/README.md",
+    "quartz-site/quartz-4/node_modules/@img/sharp-libvips-linux-x64/README.md",
+    "quartz-site/quartz-4/node_modules/pixi.js/README.md"
+  ]
+}
