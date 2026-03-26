@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README-nonpub.md",
+                "file": "tag-index-source-nonpub.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README-nonpub"
+              "title": "tag-index-source-nonpub"
             }
           }
         ]
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README-nonpub.md",
+                "file": "tag-index-source-nonpub.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README-nonpub"
+              "title": "Outline of tag-index-source-nonpub"
             }
           }
         ],
@@ -194,18 +194,19 @@
     "quartz-site/quartz-4/public/Topics/due+uno-og-image.webp",
     "quartz-site/quartz-4/public/Lista-Seminari/Valutazione-formativa-og-image.webp",
     "quartz-site/quartz-4/public/Lista-Seminari/UD-per-Corpora-L2-og-image.webp",
-    "quartz-site/quartz-4/public/tags/index.html",
     "quartz-site/quartz-4/public/tag-index.html",
     "quartz-site/quartz-4/public/index.html",
+    "quartz-site/quartz-4/public/Topics/uno.html",
+    "quartz-site/quartz-4/public/Topics/tre.html",
+    "quartz-site/quartz-4/public/Topics/tre+uno.html",
     "quartz-site/quartz-4/public/postscript.js",
+    "quartz-site/quartz-4/public/static/giscus/light.css",
+    "quartz-site/quartz-4/public/static/giscus/dark.css",
+    "quartz-site/quartz-4/public/static/giscus",
     "quartz-site/quartz-4/public/prescript.js",
-    "quartz-site/quartz-4/public/index.css",
-    "quartz-site/quartz-4/public/tags/ob/valutazione/formativa.html",
-    "quartz-site/quartz-4/public/tags/ob/corpora/l2.html",
-    "quartz-site/quartz-4/public/tags/ob/animali/mammals.html",
-    "quartz-site/quartz-4/public/tags/ob/valutazione.html",
     "quartz-site/quartz-4/public/static/og-image.png",
     "quartz-site/quartz-4/public/static/icon.png",
+    "README-nonpub.md",
     "tag-index-source-nonpub.md",
     "content/tag-index.md",
     "content/tag-index-source-nonpub.md",
@@ -215,7 +216,6 @@
     "scripts-nonpub/generate_tag-sections.md",
     "content/tag-definitions-nonpub.md",
     "fil-direcotory.md",
-    "README-nonpub.md",
     "TTP/uno/index.md",
     "TTP/uno/UD-per-Corpora-L2.md",
     "TTP/uno/Lessico-e-ripetizione.md",

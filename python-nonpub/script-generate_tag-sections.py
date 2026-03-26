@@ -12,10 +12,6 @@ try:
 except ImportError:
     raise SystemExit("Manca PyYAML. Installa con: python -m pip install pyyaml")
 
-# ============================================================
-# CONFIGURAZIONE
-# ============================================================
-
 CLEAN_REFERENCE_TOPICS = True
 CLEAN_TTP = True
 REBUILD_TAG_INDEX = True
@@ -28,35 +24,11 @@ SEMINARI_DIR = CONTENT_DIR / "Lista-Seminari"
 REFERENCE_TOPICS_DIR = CONTENT_DIR / "Topics"
 TTP_DIR = PROJECT_ROOT / "TTP-nonpub"
 
-# Sorgente manuale in root del vault
 TAG_INDEX_SOURCE_FILE = PROJECT_ROOT / "tag-index-source-nonpub.md"
-
-# File pubblico generato
 TAG_INDEX_FILE = CONTENT_DIR / "tag-index.md"
 INDEX_FILE = CONTENT_DIR / "index.md"
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n?", re.DOTALL)
-
-# ------------------------------------------------------------
-# Grammatica del file tag-index-source-nonpub.md
-# ------------------------------------------------------------
-# Sezioni umane:
-#   # A - tags che iniziano per A
-#
-# Blocco tag valido:
-#   - #ob/animali
-#     - **Title**: "Animali"
-#     - **Description**: "..."
-#     - **Mia**: "campo opzionale"
-#
-# Regole:
-# - un tag inizia con "- #ob/"
-# - le proprietà del tag sono righe tipo:
-#       due o più spazi + "- **NomeCampo**: valore"
-# - campi obbligatori: Title, Description
-# - i campi extra sono ammessi
-# - i TAB non sono ammessi
-# ------------------------------------------------------------
 
 TAG_LINE_RE = re.compile(r"^- (#[A-Za-z0-9/_-]+)\s*$")
 PROPERTY_LINE_RE = re.compile(
@@ -64,7 +36,6 @@ PROPERTY_LINE_RE = re.compile(
 )
 SECTION_LINE_RE = re.compile(r"^# (.+)$")
 
-# Blocchi legacy eventualmente presenti nel sorgente: ignorali
 LEGACY_BLOCK_STARTS = {
     "<!-- AUTO TAXONOMY TAGS START -->",
     "<!-- AUTO TAG FAMILIES START -->",
@@ -155,17 +126,28 @@ def canonical_prop_name(raw_name: str) -> str:
     return name
 
 
+def normalize_hash_tag(value: str, line_no: int, source_path: Path) -> str:
+    value = value.strip()
+    if not value.startswith("#ob/"):
+        raise TagIndexSyntaxError(
+            f"Errore in {source_path}, riga {line_no}: TopicTag deve iniziare con '#ob/'"
+        )
+    return value.lstrip("#").strip()
+
+
 def finalize_tag_block(
     tag_defs: dict[str, dict[str, str]],
+    entries: list[dict],
     current_tag: str | None,
     current_props: dict[str, str],
     current_tag_line: int | None,
+    current_section: str | None,
     source_path: Path,
 ) -> None:
     if current_tag is None:
         return
 
-    missing = [field for field in ("title", "description") if not current_props.get(field)]
+    missing = [field for field in ("title", "description", "topictag") if not current_props.get(field)]
     if missing:
         missing_str = ", ".join(missing)
         raise TagIndexSyntaxError(
@@ -178,10 +160,20 @@ def finalize_tag_block(
             f"Errore in {source_path}, riga {current_tag_line}: tag duplicato #{current_tag}"
         )
 
-    tag_defs[current_tag] = dict(current_props)
+    data = dict(current_props)
+    tag_defs[current_tag] = data
+    entries.append(
+        {
+            "tag": current_tag,
+            "title": data["title"],
+            "description": data["description"],
+            "topictag": data["topictag"],
+            "section": current_section or "",
+        }
+    )
 
 
-def load_tag_defs_from_source(path: Path) -> dict[str, dict[str, str]]:
+def parse_tag_index_source(path: Path) -> tuple[dict[str, dict[str, str]], list[dict]]:
     if not path.exists():
         raise FileNotFoundError(f"File non trovato: {path}")
 
@@ -189,10 +181,12 @@ def load_tag_defs_from_source(path: Path) -> dict[str, dict[str, str]]:
     lines = text.splitlines()
 
     tag_defs: dict[str, dict[str, str]] = {}
+    entries: list[dict] = []
 
     current_tag: str | None = None
     current_props: dict[str, str] = {}
     current_tag_line: int | None = None
+    current_section: str | None = None
     inside_legacy_block = False
 
     for idx, raw_line in enumerate(lines, start=1):
@@ -206,7 +200,7 @@ def load_tag_defs_from_source(path: Path) -> dict[str, dict[str, str]]:
         stripped = line.strip()
 
         if stripped in LEGACY_BLOCK_STARTS:
-            finalize_tag_block(tag_defs, current_tag, current_props, current_tag_line, path)
+            finalize_tag_block(tag_defs, entries, current_tag, current_props, current_tag_line, current_section, path)
             current_tag = None
             current_props = {}
             current_tag_line = None
@@ -221,22 +215,24 @@ def load_tag_defs_from_source(path: Path) -> dict[str, dict[str, str]]:
             continue
 
         if stripped == "":
-            finalize_tag_block(tag_defs, current_tag, current_props, current_tag_line, path)
+            finalize_tag_block(tag_defs, entries, current_tag, current_props, current_tag_line, current_section, path)
             current_tag = None
             current_props = {}
             current_tag_line = None
             continue
 
-        if SECTION_LINE_RE.match(stripped):
-            finalize_tag_block(tag_defs, current_tag, current_props, current_tag_line, path)
+        section_match = SECTION_LINE_RE.match(stripped)
+        if section_match:
+            finalize_tag_block(tag_defs, entries, current_tag, current_props, current_tag_line, current_section, path)
             current_tag = None
             current_props = {}
             current_tag_line = None
+            current_section = section_match.group(1).strip()
             continue
 
         tag_match = TAG_LINE_RE.match(line)
         if tag_match:
-            finalize_tag_block(tag_defs, current_tag, current_props, current_tag_line, path)
+            finalize_tag_block(tag_defs, entries, current_tag, current_props, current_tag_line, current_section, path)
 
             raw_tag = tag_match.group(1)
             normalized_tag = raw_tag.lstrip("#").strip()
@@ -256,7 +252,12 @@ def load_tag_defs_from_source(path: Path) -> dict[str, dict[str, str]]:
             raw_key = prop_match.group(1).strip()
             key = canonical_prop_name(raw_key)
             value_text = prop_match.group(2).strip()
-            value = parse_scalar(value_text, idx, path)
+
+            if key == "topictag":
+                value = normalize_hash_tag(parse_scalar(value_text, idx, path), idx, path)
+            else:
+                value = parse_scalar(value_text, idx, path)
+
             current_props[key] = value
             continue
 
@@ -265,20 +266,22 @@ def load_tag_defs_from_source(path: Path) -> dict[str, dict[str, str]]:
 
         raise TagIndexSyntaxError(
             f"Errore in {path}, riga {idx}: sintassi non valida dentro il blocco del tag "
-            f"#{current_tag}. Atteso formato: '  - **Title**: ...' o '  - **Description**: ...'"
+            f"#{current_tag}. Atteso formato: '  - **Title**: ...', "
+            f"'  - **Description**: ...' o '  - **TopicTag**: ...'"
         )
 
-    finalize_tag_block(tag_defs, current_tag, current_props, current_tag_line, path)
+    finalize_tag_block(tag_defs, entries, current_tag, current_props, current_tag_line, current_section, path)
 
     if not tag_defs:
         raise TagIndexSyntaxError(
             f"Errore in {path}: nessun tag valido trovato. Attesa sintassi tipo:\n"
             f"- #ob/esempio\n"
             f"  - **Title**: Titolo\n"
-            f"  - **Description**: Descrizione"
+            f"  - **Description**: Descrizione\n"
+            f"  - **TopicTag**: #ob/esempio"
         )
 
-    return tag_defs
+    return tag_defs, entries
 
 
 def tag_title(tag: str, tag_defs: dict) -> str:
@@ -409,11 +412,7 @@ def generate_index(notes: list[dict], tag_defs: dict) -> str:
     return "\n".join(lines)
 
 
-def generate_reference_topic_page(
-    combo: tuple[str, ...],
-    tag_defs: dict,
-    notes: list[dict],
-) -> str:
+def generate_reference_topic_page(combo: tuple[str, ...], tag_defs: dict, notes: list[dict]) -> str:
     title = combo_title(combo, tag_defs)
     description = combo_description(combo, tag_defs)
 
@@ -493,10 +492,7 @@ def generate_ttp_index(combo: tuple[str, ...], tag_defs: dict, notes: list[dict]
     return "\n".join(lines)
 
 
-def build_reference_topics(
-    notes_by_combo: dict[tuple[str, ...], list[dict]],
-    tag_defs: dict,
-) -> None:
+def build_reference_topics(notes_by_combo: dict[tuple[str, ...], list[dict]], tag_defs: dict) -> None:
     ensure_dir(REFERENCE_TOPICS_DIR)
     for combo in sorted_combos(notes_by_combo.keys()):
         slug = combo_slug(combo)
@@ -504,10 +500,7 @@ def build_reference_topics(
         (REFERENCE_TOPICS_DIR / f"{slug}.md").write_text(page, encoding="utf-8")
 
 
-def build_ttp(
-    notes_by_combo: dict[tuple[str, ...], list[dict]],
-    tag_defs: dict,
-) -> None:
+def build_ttp(notes_by_combo: dict[tuple[str, ...], list[dict]], tag_defs: dict) -> None:
     ensure_dir(TTP_DIR)
     for combo in sorted_combos(notes_by_combo.keys()):
         slug = combo_slug(combo)
@@ -522,130 +515,17 @@ def build_ttp(
             (folder / note["source_name"]).write_text(replica_text, encoding="utf-8")
 
 
-def is_taxonomy_tag(tag: str) -> bool:
-    parts = tag.split("/")
-    return len(parts) == 2 and parts[0] == "ob"
+def tag_public_link(tag: str) -> str:
+    return f"[`#{tag}`](tags/{tag})"
 
 
-def taxonomy_tags(tag_defs: dict[str, dict[str, str]]) -> list[str]:
-    return sorted(
-        [tag for tag in tag_defs.keys() if is_taxonomy_tag(tag)],
-        key=lambda x: x.casefold(),
-    )
+def taxonomy_tags(entries: list[dict]) -> list[str]:
+    topics = {entry["topictag"] for entry in entries}
+    return sorted(topics, key=lambda x: x.casefold())
 
 
-def public_tag_index_lines_from_source(source_path: Path) -> list[str]:
-    """
-    Costruisce il corpo pubblico del tag index con TAG VERI.
-    """
-    text = source_path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-
-    output: list[str] = []
-
-    current_tag: str | None = None
-    current_props: dict[str, str] = {}
-    inside_legacy_block = False
-
-    def flush_current_tag() -> None:
-        nonlocal current_tag, current_props
-        if current_tag is None:
-            return
-
-        # TAG VERO ATTIVO
-        output.append(f"- #{current_tag}")
-
-        title = current_props.get("title")
-        description = current_props.get("description")
-
-        if title:
-            output.append(f"  - **Title:** {title}")
-        if description:
-            output.append(f"  - **Description:** {description}")
-
-        for key, value in current_props.items():
-            if key in {"title", "description"}:
-                continue
-            pretty_key = key.replace("_", " ").title()
-            output.append(f"  - **{pretty_key}:** {value}")
-
-        output.append("")
-        current_tag = None
-        current_props = {}
-
-    for raw_line in lines:
-        line = raw_line.rstrip("\n")
-        stripped = line.strip()
-
-        if stripped in LEGACY_BLOCK_STARTS:
-            flush_current_tag()
-            inside_legacy_block = True
-            continue
-
-        if stripped in LEGACY_BLOCK_ENDS:
-            inside_legacy_block = False
-            continue
-
-        if inside_legacy_block:
-            continue
-
-        if stripped == "":
-            flush_current_tag()
-            if output and output[-1] != "":
-                output.append("")
-            continue
-
-        if SECTION_LINE_RE.match(stripped):
-            flush_current_tag()
-            output.append(stripped)
-            output.append("")
-            continue
-
-        tag_match = TAG_LINE_RE.match(line)
-        if tag_match:
-            flush_current_tag()
-            raw_tag = tag_match.group(1)
-            current_tag = raw_tag.lstrip("#").strip()
-            current_props = {}
-            continue
-
-        prop_match = PROPERTY_LINE_RE.match(line)
-        if prop_match:
-            if current_tag is None:
-                continue
-            raw_key = prop_match.group(1).strip()
-            key = canonical_prop_name(raw_key)
-            value_text = prop_match.group(2).strip()
-            value = parse_scalar(value_text, 0, source_path)
-            current_props[key] = value
-            continue
-
-        if current_tag is None:
-            continue
-
-    flush_current_tag()
-
-    cleaned: list[str] = []
-    prev_blank = False
-    for line in output:
-        is_blank = (line.strip() == "")
-        if is_blank and prev_blank:
-            continue
-        cleaned.append(line)
-        prev_blank = is_blank
-
-    while cleaned and cleaned[-1].strip() == "":
-        cleaned.pop()
-
-    return cleaned
-
-
-def generate_public_tag_index(
-    source_path: Path,
-    tag_defs: dict[str, dict[str, str]],
-) -> str:
-    taxonomy_line = " - ".join(f"#{tag}" for tag in taxonomy_tags(tag_defs))
-    body_lines = public_tag_index_lines_from_source(source_path)
+def generate_public_tag_index(entries: list[dict]) -> str:
+    taxonomy_line = " - ".join(tag_public_link(tag) for tag in taxonomy_tags(entries))
 
     lines = [
         "---",
@@ -653,16 +533,32 @@ def generate_public_tag_index(
         'description: "Indice pubblico dei tag e delle loro descrizioni."',
         "---",
         "",
-        "# Tag Index",
+        "## Topic Tags",
         "",
-        "## Taxonomy Tags",
+        taxonomy_line if taxonomy_line else "_Nessun topic tag disponibile._",
         "",
-        taxonomy_line if taxonomy_line else "_Nessun taxonomy tag disponibile._",
+        "## Alphabetical Taxonomy Tags",
         "",
     ]
 
-    lines.extend(body_lines)
-    lines.append("")
+    current_section = None
+
+    for entry in entries:
+        section = entry["section"]
+        if section != current_section:
+            current_section = section
+            if current_section:
+                lines.extend([
+                    f"### {current_section}",
+                    "",
+                ])
+
+        lines.extend([
+            f"- {tag_public_link(entry['tag'])}",
+            f"  - **Title:** {entry['title']}",
+            f"  - **Description:** {entry['description']}",
+            "",
+        ])
 
     return "\n".join(lines)
 
@@ -676,7 +572,7 @@ def main() -> None:
         raise FileNotFoundError(f"File non trovato: {TAG_INDEX_SOURCE_FILE}")
 
     try:
-        tag_defs = load_tag_defs_from_source(TAG_INDEX_SOURCE_FILE)
+        tag_defs, entries = parse_tag_index_source(TAG_INDEX_SOURCE_FILE)
     except TagIndexSyntaxError as e:
         raise SystemExit(str(e))
 
@@ -699,7 +595,7 @@ def main() -> None:
     if REBUILD_TAG_INDEX:
         cleanup_file(TAG_INDEX_FILE)
         TAG_INDEX_FILE.write_text(
-            generate_public_tag_index(TAG_INDEX_SOURCE_FILE, tag_defs),
+            generate_public_tag_index(entries),
             encoding="utf-8",
         )
 
@@ -721,5 +617,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-    
