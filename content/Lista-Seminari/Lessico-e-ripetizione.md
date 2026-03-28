@@ -1,10 +1,11 @@
 ---
-title: "Lessico e ripetizione"
-description: "Seminario fake su lessico e ripetizione."
+title: Lessico e ripetizione
+description: Seminario fake su lessico e ripetizione.
 tags:
   - tre
   - uno
-status: "draft"
+  - "#ob/animali"
+status: draft
 ---
 
 # Lessico e ripetizione

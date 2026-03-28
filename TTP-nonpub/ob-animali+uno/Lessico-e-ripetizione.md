@@ -7,12 +7,13 @@ tags:
 - '#ob/animali'
 status: draft
 replicated_from: Lista-Seminari/Lessico-e-ripetizione.md
-topic_section: tre
+topic_section: questo è il titolo+uno
 tag_combo:
-- tre
+- ob/animali
+- uno
 ---
 
-> Copia generata automaticamente per il topic **tre**.
+> Copia generata automaticamente per il topic **questo è il titolo+uno**.
 > Sorgente: `/Lista-Seminari/Lessico-e-ripetizione.md`
 
 # Lessico e ripetizione

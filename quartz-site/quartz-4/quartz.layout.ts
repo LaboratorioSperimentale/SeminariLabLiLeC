@@ -1,66 +1,69 @@
-import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import type { PageLayout, SharedLayout } from "./quartz/cfg"
+import type { Options as ExplorerOptions } from "./quartz/components/Explorer"
 
-// components shared across all pages
+const explorerFilter: ExplorerOptions["filterFn"] = (node) => {
+  const name = (node.displayName ?? "").toLowerCase()
+  const slug = (node.data?.slug ?? "").toLowerCase()
+
+  if (name === "_intersezioni") {
+    return false
+  }
+
+  if (slug === "topics/_intersezioni" || slug.startsWith("topics/_intersezioni/")) {
+    return false
+  }
+
+  return true
+}
+
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [
+    Component.Search(),
+    Component.Darkmode(),
+  ],
   afterBody: [],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      Discord: "https://discord.gg/cRFFHYye7t",
     },
   }),
 }
 
-// components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [
-    Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
-    Component.ArticleTitle(),
-  ],
+  beforeBody: [],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
+    Component.Explorer({
+      filterFn: explorerFilter,
+      useSavedState: false,
     }),
-    Component.Explorer(),
   ],
   right: [
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
+  pageBody: Component.Content(),
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle()],
+  beforeBody: [],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
+    Component.Explorer({
+      filterFn: explorerFilter,
+      useSavedState: false,
     }),
-    Component.Explorer(),
   ],
-  right: [],
+  right: [
+    Component.Graph(),
+    Component.DesktopOnly(Component.TableOfContents()),
+    Component.Backlinks(),
+  ],
+  pageBody: Component.Content(),
 }

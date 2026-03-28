@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import itertools
-import json
 import re
 import shutil
 from collections import defaultdict
@@ -23,11 +22,10 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = PROJECT_ROOT / "content"
 SEMINARI_DIR = CONTENT_DIR / "Lista-Seminari"
 REFERENCE_TOPICS_DIR = CONTENT_DIR / "Topics"
-REFERENCE_INTERSECTIONS_DIR = REFERENCE_TOPICS_DIR / "_intersezioni"
 TTP_DIR = PROJECT_ROOT / "TTP-nonpub"
 
 TAG_INDEX_SOURCE_FILE = PROJECT_ROOT / "tag-index-source-nonpub.md"
-TAG_INDEX_FILE = CONTENT_DIR / "topics.md"
+TAG_INDEX_FILE = CONTENT_DIR / "tag-index.html"
 INDEX_FILE = CONTENT_DIR / "index.md"
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n?", re.DOTALL)
@@ -68,10 +66,6 @@ def cleanup_folder(folder: Path) -> None:
 def cleanup_file(path: Path) -> None:
     if path.exists():
         path.unlink()
-
-
-def yaml_quote(value: str) -> str:
-    return json.dumps(str(value), ensure_ascii=False)
 
 
 def parse_frontmatter(md_text: str) -> tuple[dict, str]:
@@ -300,25 +294,8 @@ def tag_description(tag: str, tag_defs: dict) -> str:
     return str(info.get("description", "")) if isinstance(info, dict) else ""
 
 
-def bare_tag_name(tag: str) -> str:
-    if tag.startswith("ob/"):
-        return tag[3:]
-    return tag
-
-
-def public_tag_label(tag: str, tag_defs: dict) -> str:
-    return bare_tag_name(tag)
-
-
 def combo_slug(combo: tuple[str, ...]) -> str:
-    cleaned = []
-    for tag in combo:
-        cleaned.append(slugify(bare_tag_name(tag)))
-    return "+".join(cleaned)
-
-
-def combo_public_label(combo: tuple[str, ...]) -> str:
-    return "+".join(bare_tag_name(tag) for tag in combo)
+    return "+".join(slugify(tag) for tag in combo)
 
 
 def combo_title(combo: tuple[str, ...], tag_defs: dict) -> str:
@@ -330,27 +307,11 @@ def combo_description(combo: tuple[str, ...], tag_defs: dict) -> str:
         desc = tag_description(combo[0], tag_defs)
         if desc:
             return desc
-        return f"Contenuti associati al tag: {public_tag_label(combo[0], tag_defs)}."
-    return f"Contenuti associati alla combinazione di tag: {combo_public_label(combo)}."
-
-
-def topic_page_relative_path(combo: tuple[str, ...]) -> str:
-    if len(combo) == 1:
-        return f"Topics/{combo_slug(combo)}"
-    return f"Topics/_intersezioni/{combo_slug(combo)}"
-
-
-def topic_single_link(tag: str, tag_defs: dict) -> str:
-    return wiki_link(topic_page_relative_path((tag,)), public_tag_label(tag, tag_defs))
-
-
-def topic_combo_link(combo: tuple[str, ...]) -> str:
-    return wiki_link(topic_page_relative_path(combo), combo_public_label(combo))
+    return f"Contenuti associati alla combinazione di tag: {combo_title(combo, tag_defs)}."
 
 
 def format_inline_tags(tags: list[str], tag_defs: dict) -> str:
-    ordered = sorted(set(tags), key=lambda x: x.casefold())
-    return " - ".join(topic_single_link(tag, tag_defs) for tag in ordered)
+    return " - ".join(tag_title(tag, tag_defs) for tag in sorted(set(tags), key=lambda x: x.casefold()))
 
 
 def all_nonempty_tag_combinations(tags: list[str]) -> list[tuple[str, ...]]:
@@ -405,65 +366,19 @@ def collect_notes_by_combo(notes: list[dict]) -> dict[tuple[str, ...], list[dict
 
 
 def sorted_combos(combos) -> list[tuple[str, ...]]:
-    return sorted(combos, key=lambda c: (len(c), [t.casefold() for t in c]))
-
-
-def existing_single_topics(notes_by_combo: dict[tuple[str, ...], list[dict]]) -> list[str]:
-    return [combo[0] for combo in sorted_combos(notes_by_combo.keys()) if len(combo) == 1]
-
-
-def combos_containing_tag(
-    notes_by_combo: dict[tuple[str, ...], list[dict]],
-    tag: str,
-    min_len: int = 1,
-) -> list[tuple[str, ...]]:
-    combos = [combo for combo in notes_by_combo.keys() if tag in combo and len(combo) >= min_len]
-    return sorted_combos(combos)
-
-
-def descendant_combos(
-    current_combo: tuple[str, ...],
-    candidate_combos: list[tuple[str, ...]],
-) -> list[tuple[str, ...]]:
-    current_set = set(current_combo)
-    descendants = [
-        combo
-        for combo in candidate_combos
-        if combo != current_combo and current_set.issubset(set(combo))
-    ]
-    return sorted_combos(descendants)
-
-
-def aggregate_notes_for_tag(
-    tag: str,
-    notes_by_combo: dict[tuple[str, ...], list[dict]],
-) -> list[dict]:
-    unique: dict[str, dict] = {}
-    for combo, combo_notes in notes_by_combo.items():
-        if tag in combo:
-            for note in combo_notes:
-                unique[note["relative_path"]] = note
-    return sorted(unique.values(), key=lambda x: x["title"].casefold())
-
-
-def render_note_lines(note: dict, tag_defs: dict) -> list[str]:
-    suffix = f" — {note['description']}" if note["description"] else ""
-    lines = [f"- {wiki_link(note['relative_path'], note['title'])}{suffix}"]
-
-    tag_line = format_inline_tags(note["tags"], tag_defs)
-    if tag_line:
-        lines.append(f"  - Tags: {tag_line}")
-
-    return lines
+    return sorted(combos, key=lambda c: ([t.casefold() for t in c], len(c)))
 
 
 def generate_index(notes: list[dict], tag_defs: dict) -> str:
-    all_tags = sorted({tag for note in notes for tag in note["tags"]}, key=lambda x: x.casefold())
+    all_tags = sorted(
+        set(tag_defs.keys()) | {tag for note in notes for tag in note["tags"]},
+        key=lambda x: x.casefold(),
+    )
 
     lines = [
         "---",
-        f"title: {yaml_quote('Index')}",
-        f"description: {yaml_quote('Home del sito e indice dei contenuti.')}",
+        'title: "Index"',
+        'description: "Home del sito e indice dei contenuti."',
         "---",
         "",
         "# Index",
@@ -480,37 +395,40 @@ def generate_index(notes: list[dict], tag_defs: dict) -> str:
         lines.append("_Nessun seminario disponibile._")
     else:
         for note in notes:
-            lines.extend(render_note_lines(note, tag_defs))
+            desc = f" — {note['description']}" if note["description"] else ""
+            lines.append(f"- {wiki_link(note['relative_path'], note['title'])}{desc}")
+            tag_line = format_inline_tags(note["tags"], tag_defs)
+            if tag_line:
+                lines.append(f"  - Tags: {tag_line}")
 
     lines.extend([
         "",
         "## Altri indici",
         "",
-        "- [[topics|Topics]]",
+        "- [[tag-index|Tag Index]]",
         "",
     ])
 
     return "\n".join(lines)
 
 
-def generate_base_topic_page(
-    base_tag: str,
+def generate_reference_topic_page(
+    combo: tuple[str, ...],
     tag_defs: dict,
     notes: list[dict],
-    child_combos: list[tuple[str, ...]],
 ) -> str:
-    page_title = public_tag_label(base_tag, tag_defs)
-    page_description = combo_description((base_tag,), tag_defs)
+    slug = combo_slug(combo)
+    human_description = combo_description(combo, tag_defs)
 
     lines = [
         "---",
-        f"title: {yaml_quote(page_title)}",
-        f"description: {yaml_quote(page_description)}",
+        f'title: "{slug}"',
+        f'description: "{human_description}"',
         "---",
         "",
-        f"# {page_title}",
+        f"# {slug}",
         "",
-        page_description,
+        human_description,
         "",
         "## Contenuti collegati",
         "",
@@ -520,66 +438,11 @@ def generate_base_topic_page(
         lines.append("_Nessun contenuto associato a questa sezione._")
     else:
         for note in notes:
-            lines.extend(render_note_lines(note, tag_defs))
-
-    if child_combos:
-        lines.extend([
-            "",
-            "## INTERSEZIONI TAGS",
-            "",
-        ])
-        for combo in child_combos:
-            lines.append(f"- {topic_combo_link(combo)}")
+            suffix = f" — {note['description']}" if note["description"] else ""
+            lines.append(f"- {wiki_link(note['relative_path'], note['title'])}{suffix}")
 
     lines.append("")
     return "\n".join(lines)
-
-
-def generate_intersection_topic_page(
-    combo: tuple[str, ...],
-    tag_defs: dict,
-    notes: list[dict],
-    child_combos: list[tuple[str, ...]],
-) -> str:
-    page_title = combo_public_label(combo)
-    page_description = combo_description(combo, tag_defs)
-
-    lines = [
-        "---",
-        f"title: {yaml_quote(page_title)}",
-        f"description: {yaml_quote(page_description)}",
-        "---",
-        "",
-        f"# {page_title}",
-        "",
-        page_description,
-        "",
-        "## TAG COINVOLTI",
-        "",
-        format_inline_tags(list(combo), tag_defs),
-        "",
-        "## Contenuti collegati",
-        "",
-    ]
-
-    if not notes:
-        lines.append("_Nessun contenuto associato a questa intersezione._")
-    else:
-        for note in notes:
-            lines.extend(render_note_lines(note, tag_defs))
-
-    if child_combos:
-        lines.extend([
-            "",
-            "## INTERSEZIONI TAGS",
-            "",
-        ])
-        for child_combo in child_combos:
-            lines.append(f"- {topic_combo_link(child_combo)}")
-
-    lines.append("")
-    return "\n".join(lines)
-
 
 def build_replicated_note(note: dict, combo: tuple[str, ...], tag_defs: dict) -> str:
     source_text = note["source_path"].read_text(encoding="utf-8")
@@ -610,8 +473,8 @@ def generate_ttp_index(combo: tuple[str, ...], tag_defs: dict, notes: list[dict]
 
     lines = [
         "---",
-        f"title: {yaml_quote(title)}",
-        f"description: {yaml_quote(description)}",
+        f'title: "{title}"',
+        f'description: "{description}"',
         "---",
         "",
         f"# {title}",
@@ -634,38 +497,10 @@ def generate_ttp_index(combo: tuple[str, ...], tag_defs: dict, notes: list[dict]
 
 def build_reference_topics(notes_by_combo: dict[tuple[str, ...], list[dict]], tag_defs: dict) -> None:
     ensure_dir(REFERENCE_TOPICS_DIR)
-    ensure_dir(REFERENCE_INTERSECTIONS_DIR)
-
-    single_topics = existing_single_topics(notes_by_combo)
-
-    for base_tag in single_topics:
-        page_notes = aggregate_notes_for_tag(base_tag, notes_by_combo)
-        child_combos = combos_containing_tag(notes_by_combo, base_tag, min_len=2)
-
-        page = generate_base_topic_page(
-            base_tag=base_tag,
-            tag_defs=tag_defs,
-            notes=page_notes,
-            child_combos=child_combos,
-        )
-
-        target_file = REFERENCE_TOPICS_DIR / f"{combo_slug((base_tag,))}.md"
-        target_file.write_text(page, encoding="utf-8")
-
-    all_intersection_combos = sorted_combos([combo for combo in notes_by_combo.keys() if len(combo) > 1])
-
-    for combo in all_intersection_combos:
-        child_combos = descendant_combos(combo, all_intersection_combos)
-
-        page = generate_intersection_topic_page(
-            combo=combo,
-            tag_defs=tag_defs,
-            notes=notes_by_combo[combo],
-            child_combos=child_combos,
-        )
-
-        target_file = REFERENCE_INTERSECTIONS_DIR / f"{combo_slug(combo)}.md"
-        target_file.write_text(page, encoding="utf-8")
+    for combo in sorted_combos(notes_by_combo.keys()):
+        slug = combo_slug(combo)
+        page = generate_reference_topic_page(combo, tag_defs, notes_by_combo[combo])
+        (REFERENCE_TOPICS_DIR / f"{slug}.md").write_text(page, encoding="utf-8")
 
 
 def build_ttp(notes_by_combo: dict[tuple[str, ...], list[dict]], tag_defs: dict) -> None:
@@ -682,32 +517,50 @@ def build_ttp(notes_by_combo: dict[tuple[str, ...], list[dict]], tag_defs: dict)
             replica_text = build_replicated_note(note, combo, tag_defs)
             (folder / note["source_name"]).write_text(replica_text, encoding="utf-8")
 
+def tag_public_link(tag: str) -> str:
+    return f'<a href="/tags/{tag}/"><code>&#35;{tag}</code></a>'
 
-def topic_link_md(tag: str, tag_defs: dict) -> str:
-    return topic_single_link(tag, tag_defs)
+def taxonomy_tags(entries: list[dict]) -> list[str]:
+    topics = {entry["topictag"] for entry in entries}
+    return sorted(topics, key=lambda x: x.casefold())
 
-
-def generate_public_tag_index(
-    notes_by_combo: dict[tuple[str, ...], list[dict]],
-    tag_defs: dict,
-) -> str:
-    topics = existing_single_topics(notes_by_combo)
-    topic_links = " - ".join(topic_link_md(tag, tag_defs) for tag in topics)
+def generate_public_tag_index(entries: list[dict]) -> str:
+    taxonomy_line = " - ".join(tag_public_link(tag) for tag in taxonomy_tags(entries))
 
     lines = [
         "---",
-        f"title: {yaml_quote('Topics')}",
-        f"description: {yaml_quote('Indice dei topics di primo livello effettivamente generati.')}",
+        'title: "Tag Index"',
+        'description: "Indice pubblico dei tag e delle loro descrizioni."',
         "---",
         "",
-        "# Topics",
+        "## Topic Tags",
         "",
-        topic_links if topic_links else "_Nessun topic disponibile._",
+        taxonomy_line if taxonomy_line else "_Nessun topic tag disponibile._",
+        "",
+        "## Alphabetical Taxonomy Tags",
         "",
     ]
 
-    return "\n".join(lines)
+    current_section = None
 
+    for entry in entries:
+        section = entry["section"]
+        if section != current_section:
+            current_section = section
+            if current_section:
+                lines.extend([
+                    f"### {current_section}",
+                    "",
+                ])
+
+        lines.extend([
+            f"- {tag_public_link(entry['tag'])}",
+            f"  - **Title:** {entry['title']}",
+            f"  - **Description:** {entry['description']}",
+            "",
+        ])
+
+    return "\n".join(lines)
 
 def main() -> None:
     if not CONTENT_DIR.exists():
@@ -741,7 +594,7 @@ def main() -> None:
     if REBUILD_TAG_INDEX:
         cleanup_file(TAG_INDEX_FILE)
         TAG_INDEX_FILE.write_text(
-            generate_public_tag_index(notes_by_combo, tag_defs),
+            generate_public_tag_index(entries),
             encoding="utf-8",
         )
 
@@ -754,7 +607,6 @@ def main() -> None:
 
     print("Generazione completata.")
     print(f"Reference Topics rigenerati in: {REFERENCE_TOPICS_DIR}")
-    print(f"Intersezioni Topics rigenerate in: {REFERENCE_INTERSECTIONS_DIR}")
     print(f"TTP rigenerato in: {TTP_DIR}")
     if REBUILD_TAG_INDEX:
         print(f"Tag index pubblico rigenerato in: {TAG_INDEX_FILE}")

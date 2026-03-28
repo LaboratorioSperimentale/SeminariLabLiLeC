@@ -12,7 +12,7 @@ due - questo è il titolo - questo è il titolo - Corpora - Corpora L2 - Due - T
 ## Lista Seminari
 
 - [[Lista-Seminari/Lessico-e-ripetizione.md|Lessico e ripetizione]] — Seminario fake su lessico e ripetizione.
-  - Tags: tre - uno
+  - Tags: questo è il titolo - tre - uno
 - [[Lista-Seminari/UD-per-Corpora-L2.md|UD per Corpora L2]] — Seminario fake sui corpora per la didattica L2.
   - Tags: due - uno
 - [[Lista-Seminari/Valutazione-formativa.md|Valutazione formativa]] — Seminario fake sulla valutazione formativa.

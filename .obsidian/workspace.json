@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tag-index-source-nonpub.md",
-                "mode": "source",
+                "file": "content/topics.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "tag-index-source-nonpub"
+              "title": "topics"
             }
           }
         ]
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tag-index-source-nonpub.md",
+                "file": "python-nonpub/BKP-script-generate_tag-sections.py",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tag-index-source-nonpub"
+              "title": "Outline of BKP-script-generate_tag-sections"
             }
           }
         ],
@@ -169,7 +169,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -185,51 +186,51 @@
   },
   "active": "43bd43b41a9e1030",
   "lastOpenFiles": [
+    "content/tag-index.md",
+    "content/topics.md",
+    "TTP/due/index.md",
+    "quartz-site/quartz-4/public/topics-og-image.webp",
     "quartz-site/quartz-4/public/tag-index-og-image.webp",
     "quartz-site/quartz-4/public/index-og-image.webp",
     "quartz-site/quartz-4/public/Topics/uno-og-image.webp",
     "quartz-site/quartz-4/public/Topics/tre-og-image.webp",
     "quartz-site/quartz-4/public/Topics/tre+uno-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/due-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/due+uno-og-image.webp",
-    "quartz-site/quartz-4/public/Lista-Seminari/Valutazione-formativa-og-image.webp",
-    "quartz-site/quartz-4/public/Lista-Seminari/UD-per-Corpora-L2-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/ob-animali-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/ob-animali+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/ob-animali+tre-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/ob-animali+tre+uno-og-image.webp",
+    "quartz-site/quartz-4/public/topics.html",
     "quartz-site/quartz-4/public/tag-index.html",
     "quartz-site/quartz-4/public/index.html",
     "quartz-site/quartz-4/public/Topics/uno.html",
     "quartz-site/quartz-4/public/Topics/tre.html",
-    "quartz-site/quartz-4/public/Topics/tre+uno.html",
-    "quartz-site/quartz-4/public/postscript.js",
     "quartz-site/quartz-4/public/static/giscus/light.css",
     "quartz-site/quartz-4/public/static/giscus/dark.css",
     "quartz-site/quartz-4/public/static/giscus",
-    "quartz-site/quartz-4/public/prescript.js",
-    "quartz-site/quartz-4/public/static/og-image.png",
-    "quartz-site/quartz-4/public/static/icon.png",
-    "README-nonpub.md",
-    "tag-index-source-nonpub.md",
-    "content/tag-index.md",
-    "content/tag-index-source-nonpub.md",
-    "content/index.md",
+    "quartz-site/quartz-4/public/tags/index.html",
+    "quartz-site/quartz-4/public/postscript.js",
+    "TTP-nonpub/ob-animali+uno/index.md",
+    "TTP-nonpub/ob-animali+uno/Lessico-e-ripetizione.md",
+    "TTP-nonpub/ob-animali+tre+uno/index.md",
+    "TTP-nonpub/ob-animali+tre+uno/Lessico-e-ripetizione.md",
+    "TTP-nonpub/ob-animali+tre/index.md",
+    "TTP-nonpub/ob-animali+tre/Lessico-e-ripetizione.md",
+    "TTP-nonpub/ob-animali/index.md",
+    "TTP-nonpub/ob-animali/Lessico-e-ripetizione.md",
+    "content/Topics/tre+uno.md",
+    "content/Topics/ob-animali+uno.md",
+    "content/Topics/ob-animali+tre+uno.md",
+    "content/Topics/ob-animali+tre.md",
+    "content/Topics/ob-animali.md",
     "content/Topics/due+uno.md",
-    "content/Topics/due.md",
-    "scripts-nonpub/generate_tag-sections.md",
-    "content/tag-definitions-nonpub.md",
-    "fil-direcotory.md",
-    "TTP/uno/index.md",
-    "TTP/uno/UD-per-Corpora-L2.md",
-    "TTP/uno/Lessico-e-ripetizione.md",
-    "TTP/tre+uno/index.md",
-    "TTP/tre+uno/Lessico-e-ripetizione.md",
-    "TTP/tre/index.md",
-    "TTP/tre/Lessico-e-ripetizione.md",
-    "TTP/due+uno/UD-per-Corpora-L2.md",
-    "TTP/due+uno/index.md",
-    "TTP/due/index.md",
+    "content/Topics/_intersezioni/tre+uno.md",
+    "content/Topics/_intersezioni/due+uno.md",
+    "content/Topics/_intersezioni/animali+uno.md",
+    "content/Topics/_intersezioni/animali+tre.md",
+    "content/Topics/_intersezioni/animali+tre+uno.md",
     "TTP/due/Valutazione-formativa.md",
     "TTP/due/UD-per-Corpora-L2.md",
-    "quartz-site/quartz-4/node_modules/@img/sharp-libvips-linuxmusl-x64/README.md",
-    "quartz-site/quartz-4/node_modules/@img/sharp-libvips-linux-x64/README.md",
-    "quartz-site/quartz-4/node_modules/pixi.js/README.md"
+    "content/Topics/due.md",
+    "Clippings/2026su un sito github è possibile mettere un contatore - Cerca con Google.md"
   ]
 }

@@ -4,6 +4,7 @@ description: Seminario fake su lessico e ripetizione.
 tags:
 - tre
 - uno
+- '#ob/animali'
 status: draft
 replicated_from: Lista-Seminari/Lessico-e-ripetizione.md
 topic_section: tre+uno
