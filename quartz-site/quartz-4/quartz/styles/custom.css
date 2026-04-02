@@ -1,0 +1,38 @@
+.resource-thumbnail-wrap {
+  position: relative;
+  display: block;
+}
+
+.resource-thumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.resource-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.resource-play-triangle {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 0.12rem;
+  border-top: 0.42rem solid transparent;
+  border-bottom: 0.42rem solid transparent;
+  border-left: 0.7rem solid white;
+}
+

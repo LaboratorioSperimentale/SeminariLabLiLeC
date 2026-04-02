@@ -52,6 +52,17 @@ class TagIndexSyntaxError(Exception):
     pass
 
 
+def collect_notes_by_combo(notes: list[dict]) -> dict[tuple[str, ...], list[dict]]:
+    notes_by_combo: dict[tuple[str, ...], list[dict]] = defaultdict(list)
+    for note in notes:
+        for combo in all_nonempty_tag_combinations(note["tags"]):
+            notes_by_combo[combo].append(note)
+
+    for combo in notes_by_combo:
+        notes_by_combo[combo].sort(key=lambda x: x["title"].casefold())
+
+    return notes_by_combo
+
 def ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
@@ -384,25 +395,53 @@ def get_note_metadata(md_path: Path) -> dict | None:
 
 def collect_notes() -> list[dict]:
     notes = []
+    seen: dict[str, Path] = {}
+
     for md_path in sorted(SEMINARI_DIR.rglob("*.md")):
         meta = get_note_metadata(md_path)
-        if meta:
-            notes.append(meta)
+        if not meta:
+            continue
+
+        if not is_real_seminar(meta):
+            continue
+
+        ident = note_identity(meta)
+        if ident in seen:
+            print(f"DUPLICATO SALTATO: {md_path} == {seen[ident]}")
+            continue
+
+        seen[ident] = md_path
+        notes.append(meta)
+
     notes.sort(key=lambda x: x["title"].casefold())
     return notes
 
+def collect_notes() -> list[dict]:
+    notes = []
+    seen: dict[str, Path] = {}
 
-def collect_notes_by_combo(notes: list[dict]) -> dict[tuple[str, ...], list[dict]]:
-    notes_by_combo: dict[tuple[str, ...], list[dict]] = defaultdict(list)
-    for note in notes:
-        for combo in all_nonempty_tag_combinations(note["tags"]):
-            notes_by_combo[combo].append(note)
+    for md_path in sorted(SEMINARI_DIR.rglob("*.md")):
+        try:
+            meta = get_note_metadata(md_path)
+        except Exception as e:
+            raise RuntimeError(f"ERRORE NEL FILE: {md_path}") from e
 
-    for combo in notes_by_combo:
-        notes_by_combo[combo].sort(key=lambda x: x["title"].casefold())
+        if not meta:
+            continue
 
-    return notes_by_combo
+        if not is_real_seminar(meta):
+            continue
 
+        ident = note_identity(meta)
+        if ident in seen:
+            print(f"DUPLICATO SALTATO: {md_path} == {seen[ident]}")
+            continue
+
+        seen[ident] = md_path
+        notes.append(meta)
+
+    notes.sort(key=lambda x: x["title"].casefold())
+    return notes
 
 def sorted_combos(combos) -> list[tuple[str, ...]]:
     return sorted(combos, key=lambda c: (len(c), [t.casefold() for t in c]))
@@ -760,6 +799,52 @@ def main() -> None:
         print(f"Tag index pubblico rigenerato in: {TAG_INDEX_FILE}")
     if REBUILD_INDEX:
         print(f"Index rigenerato in: {INDEX_FILE}")
+
+def normalize_to_list(value) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return [str(x).strip().lower() for x in value if str(x).strip()]
+    return [str(value).strip().lower()]
+
+
+def is_real_seminar(meta: dict) -> bool:
+    fm = meta["frontmatter"]
+    layouts = normalize_to_list(fm.get("layout"))
+    source_name = meta["source_name"].lower()
+
+    # escludi file di servizio
+    if source_name in {"index.md", "topics.md"}:
+        return False
+
+    # se il layout è dichiarato, deve contenere seminar
+    if layouts and "seminar" not in layouts:
+        return False
+
+    return True
+
+
+def note_identity(meta: dict) -> str:
+    fm = meta["frontmatter"]
+
+    explicit_id = str(fm.get("seminar-id", "")).strip()
+    if explicit_id:
+        return explicit_id
+
+    # fallback: firma del contenuto logico
+    return json.dumps(
+        {
+            "title": meta["title"].strip().casefold(),
+            "description": meta["description"].strip().casefold(),
+            "tags": sorted(meta["tags"], key=str.casefold),
+            "seminar_date": str(fm.get("seminar-date", "")).strip(),
+            "video_link": str(
+                fm.get("seminar-video-link") or fm.get("videoLink") or ""
+            ).strip(),
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+    )
 
 
 if __name__ == "__main__":

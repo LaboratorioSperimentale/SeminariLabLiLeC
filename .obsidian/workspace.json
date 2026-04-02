@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/topics.md",
-                "mode": "preview",
-                "source": false
+                "file": "content/Lista-Seminari/Valutazione-formativa - It.md",
+                "mode": "source",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "topics"
+              "title": "Valutazione-formativa - It"
             }
           }
         ]
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python-nonpub/BKP-script-generate_tag-sections.py",
+                "file": "content/Lista-Seminari/Valutazione-formativa - It.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of BKP-script-generate_tag-sections"
+              "title": "Outline of Valutazione-formativa - It"
             }
           }
         ],
@@ -169,8 +169,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -186,51 +185,51 @@
   },
   "active": "43bd43b41a9e1030",
   "lastOpenFiles": [
-    "content/tag-index.md",
-    "content/topics.md",
-    "TTP/due/index.md",
     "quartz-site/quartz-4/public/topics-og-image.webp",
     "quartz-site/quartz-4/public/tag-index-og-image.webp",
     "quartz-site/quartz-4/public/index-og-image.webp",
     "quartz-site/quartz-4/public/Topics/uno-og-image.webp",
     "quartz-site/quartz-4/public/Topics/tre-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/tre+uno-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/ob-animali-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/ob-animali+uno-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/ob-animali+tre-og-image.webp",
-    "quartz-site/quartz-4/public/Topics/ob-animali+tre+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/animali-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/tre+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+tre-og-image.webp",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+tre+uno-og-image.webp",
+    "quartz-site/quartz-4/public/Lista-Seminari/tigr---It-og-image.webp",
     "quartz-site/quartz-4/public/topics.html",
     "quartz-site/quartz-4/public/tag-index.html",
     "quartz-site/quartz-4/public/index.html",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/tre+uno.html",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+uno.html",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+tre.html",
+    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+tre+uno.html",
     "quartz-site/quartz-4/public/Topics/uno.html",
     "quartz-site/quartz-4/public/Topics/tre.html",
-    "quartz-site/quartz-4/public/static/giscus/light.css",
-    "quartz-site/quartz-4/public/static/giscus/dark.css",
-    "quartz-site/quartz-4/public/static/giscus",
-    "quartz-site/quartz-4/public/tags/index.html",
-    "quartz-site/quartz-4/public/postscript.js",
-    "TTP-nonpub/ob-animali+uno/index.md",
-    "TTP-nonpub/ob-animali+uno/Lessico-e-ripetizione.md",
-    "TTP-nonpub/ob-animali+tre+uno/index.md",
-    "TTP-nonpub/ob-animali+tre+uno/Lessico-e-ripetizione.md",
-    "TTP-nonpub/ob-animali+tre/index.md",
-    "TTP-nonpub/ob-animali+tre/Lessico-e-ripetizione.md",
-    "TTP-nonpub/ob-animali/index.md",
-    "TTP-nonpub/ob-animali/Lessico-e-ripetizione.md",
-    "content/Topics/tre+uno.md",
-    "content/Topics/ob-animali+uno.md",
-    "content/Topics/ob-animali+tre+uno.md",
-    "content/Topics/ob-animali+tre.md",
-    "content/Topics/ob-animali.md",
-    "content/Topics/due+uno.md",
-    "content/Topics/_intersezioni/tre+uno.md",
-    "content/Topics/_intersezioni/due+uno.md",
-    "content/Topics/_intersezioni/animali+uno.md",
-    "content/Topics/_intersezioni/animali+tre.md",
-    "content/Topics/_intersezioni/animali+tre+uno.md",
-    "TTP/due/Valutazione-formativa.md",
-    "TTP/due/UD-per-Corpora-L2.md",
-    "content/Topics/due.md",
-    "Clippings/2026su un sito github è possibile mettere un contatore - Cerca con Google.md"
+    "quartz-site/quartz-4/public/Topics/animali.html",
+    "TTP-nonpub/animali+tre+uno/tigr - It.md",
+    "TTP-nonpub/animali+tre+uno/smallworld - It.md",
+    "TTP-nonpub/animali+tre+uno/nvivo - En.md",
+    "TTP-nonpub/animali+tre+uno/index.md",
+    "TTP-nonpub/animali+tre+uno/emozioni - It.md",
+    "TTP-nonpub/animali+tre+uno/elantrascrizione - It.md",
+    "TTP-nonpub/animali+tre+uno/edizionidigitali - It.md",
+    "TTP-nonpub/animali+tre+uno/catma - It.md",
+    "TTP-nonpub/animali+tre+uno/a-linement - En.md",
+    "TTP-nonpub/animali+tre+uno/Valutazione-formativa - It.md",
+    "TTP-nonpub/animali+tre+uno/UD-per-Corpora-L2 - It.md",
+    "TTP-nonpub/animali+tre+uno/Modeling-Evaluation-Perspectivist-NLP - It.md",
+    "TTP-nonpub/animali+tre+uno/Enhancing-Literary-Translation-Through-Technology - It.md",
+    "content/Lista-Seminari/UD-per-Corpora-L2 - It.md",
+    "content/Lista-Seminari/tigr - It.md",
+    "content/Lista-Seminari/smallworld - It.md",
+    "content/Lista-Seminari/Modeling-Evaluation-Perspectivist-NLP - It.md",
+    "content/Lista-Seminari/Enhancing-Literary-Translation-Through-Technology - It.md",
+    "content/Lista-Seminari/emozioni - It.md",
+    "content/Lista-Seminari/elantrascrizione - It.md",
+    "content/Lista-Seminari/edizionidigitali - It.md",
+    "content/Lista-Seminari/catma - It.md",
+    "content/Lista-Seminari/en/nvivo - En.md",
+    "content/Lista-Seminari/en/catma - En.md",
+    "content/Lista-Seminari/en/a-linement - En.md"
   ]
 }

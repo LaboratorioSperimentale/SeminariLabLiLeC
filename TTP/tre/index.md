@@ -9,4 +9,4 @@ Materiali del terzo asse tematico.
 
 ## File replicati in questo topic
 
-- [[Lessico-e-ripetizione.md|Lessico e ripetizione]]
+- [[TTP/tre/Lessico-e-ripetizione|Lessico e ripetizione]]

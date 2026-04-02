@@ -43,11 +43,14 @@ export const defaultContentPageLayout: PageLayout = {
     }),
   ],
   right: [
-    Component.Graph(),
+    Component.DesktopOnly(Component.VideoThumbnail()),
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
+    Component.Graph(),
   ],
   pageBody: Component.Content(),
+  afterBody: [
+    Component.ResourcesSection(),
+  ],
 }
 
 export const defaultListPageLayout: PageLayout = {
@@ -66,4 +69,5 @@ export const defaultListPageLayout: PageLayout = {
     Component.Backlinks(),
   ],
   pageBody: Component.Content(),
+  afterBody: [],
 }

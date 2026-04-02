@@ -9,4 +9,4 @@ Contenuti associati alla combinazione di tag: Tre+Uno.
 
 ## File replicati in questo topic
 
-- [[Lessico-e-ripetizione.md|Lessico e ripetizione]]
+- [[TTP/tre+uno/Lessico-e-ripetizione|Lessico e ripetizione]]

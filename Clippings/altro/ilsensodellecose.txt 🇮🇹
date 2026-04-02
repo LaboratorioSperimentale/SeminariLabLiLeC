@@ -1,0 +1,48 @@
+# Il senso delle cose: Annotazione semantica in corpora di lingua scritta
+
+Sommario
+Il seminario è diviso in due blocchi:
+Parte 1: La prima parte è volta a spiegare cosa significhi fare annotazione semantica.
+- Semantica: Di cosa stiamo parlando?
+- Livelli di annotazione semantica: parola; frase; testo
+- Annotare eventi e le loro relazioni: Event Storylines Corpus v1.2
+
+Parte 2
+- Hands-on: INCePTION - strumento per annotazione testi scritti. Tutorial sull'uso di questo strumento di annotazione
+
+Cerchiamo di capire cosa sia la semantica, o perlomeno mettere dei paletti sulla definizione di questo livelli di analisi linguistica.
+PEN IN INGLESE
+
+Andando a cercare definizioni formali, la Semantica è lo studio del significato comunicato attraverso il linguaggio ("the study of meaning communicated through language", Saeed, 2009). In inglese, "meaning" è un termine un po' ambiguo, in quanto copre sia la definizione di "senso" sia quello di "significato".
+Possiamo focalizzare la nostra analisi su diversi livelli:
+- Relazione tra segno e significato (o tra referente e significato);
+- Relazioni tra significati, ossia capire come un certo termine sta in relazione semantica rispetto ad altri (questo è un ambito più vicino alla semantica lessicale);
+- Combinazione di segni in espressioni complesse, ossia come si formula il significato di una frase (da un insieme finito di termini possiamo costruire infiniti significati);
+- Relazioni tra espressioni complesse, dunque andare ad investigare la semantica a livello di testo in cui l'analisi stessa dello studio del significato richiede di cambiare alcuni elementi presi in considerazione.
+
+Dunque, la parola "Semantica" è un enorme termine ombrello per indicare il modo in cui il significato/senso viene costruito, acquisito, alterato, interpretato, negoziato, contraddetto o implicato.
+
+Lo studio del significato in un'espressione linguistica non può essere completamente astratto dal suo contesto di occorrenza: "the meaning of a word is its use" (Wittgenstein, Philosophical Investigation).
+
+Un aspetto problematico è il confine tra semantica e pragmatica, che a volte è molto labile ("All knowledge in the field of descriptive semantics and descriptive syntax is based upon previous knowledge in pragmatics", Carnap, '42). Questa frase per quanto provocatoria coglie aspetti che non possono essere negati.
+
+Quando si parla di semantica, non si possono ignorare i formalismi. uno degli scopi di vari approcci e formalismi più teorici di analisi semantica è cercare di rapprersentar ein maniera univoca il senso di un'espressione linguistica, che sia essa una parola o una frase. I problemi sul dove si pone il livello  di analisi non sussistono, ma esistono tantissimi formalismi. Questi sono alcuni dei più famosi (spesso trasformati in veri e propri progetti di schemi di annotazione e sistemi):
+
+
+
+
+Cerchiamo ora di capire cosa significhi annotare dati.
+Annotare dati vuol dire rendere esplicita informazione. Nel nostro caso vogliamo annotazione linguistica di dati, quindi vogliamo rendere esplicita informazione linguistica. Nel caso specifico dell'anotazione semantica, vogliamo rendere esplicita una rappresentazione del significato, una qualche connessione rispetto ai vari livelli di interpretazione del termine semantica.
+
+L'annotazione stessa è un processo che risulta in una risorsa linguistica. Il processo di annotazione è potenzialmente utilizzabile da una macchina-algoritmo, per automatizzare quanto è stato reso esplicito. Annotare non vuol dire necessariamente qualcosa che può essere usato da una macchina, ma tenere questo aspetto a mente quando si costruiscono risorse linguistiche è sicuramente un vantaggio.
+
+Annotare permette di:
+- ottenere dati empiricamente validi:
+- uno degli aspetti più affascinanti del processo di annotazione è che in maniera più o meno indiretta possiamo andare a cercare di validare ipotesi se non addirittura intere teorie linguistiche, mettendo veramente la teoria alla prova del dato o la nostra ipotesi alla prova di un certo dato linguisitco.
+- Un aspetto non banale è la possibilità di replicare risultati e analisi. Se rendo esplicito come ho condotto la mia analisi e come sono arrivato a certe conclusioni, e allo stesso tempo metto a disposizione il processo stesso che mi ha portato ad arrivare a tali conclusioni, diventa facile anche per altri ricercatori condurre le stesse analisi e validare i risultati che sono stati  presentati, se non addirittura replicarli o vedere se ci sono differenze che sussistono fra lingue.
+- Annotare permette di addestrare algoritmi in quello che si chiama "apprendimento automatico supervisionato": macchine che da sole imparano dagli esempi che sono stati proposti.
+
+
+Quando annotiamo dei dati, uno degli elementi fondamentali da tenere presente è che abbiamo bisogno di un insieme predefinito di categorie. Di solito, questo iniseme di categorie deve corrispondere a un certo fenomeno linguistico. Bisogna cercare di imparare il più possibile dalla letteratura esistente su aspetti teorici, ma anche semplicemente descrittivi di un certo fenomeno linguistico, e cercare di trasformare queste nozioni in un insieme di categorie definite, chiare ma anche formalizzabili. Questo rapporto è estremamente importante e ricco, perché è vero che può essere visto anche come una specie di banalizzazione, perché a un certo punto
+
+17:42

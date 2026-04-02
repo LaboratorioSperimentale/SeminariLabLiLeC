@@ -9,5 +9,5 @@ Materiali del secondo asse tematico.
 
 ## File replicati in questo topic
 
-- [[UD-per-Corpora-L2.md|UD per Corpora L2]]
-- [[Valutazione-formativa.md|Valutazione formativa]]
+- [[TTP/due/UD-per-Corpora-L2|UD per Corpora L2]]
+- [[TTP/due/Valutazione-formativa|Valutazione formativa]]

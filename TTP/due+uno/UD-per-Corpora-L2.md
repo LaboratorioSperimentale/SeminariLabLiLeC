@@ -29,5 +29,5 @@ Testo fittizio per il prototipo.
 
 ## Rimandi
 
-- [[content/Lista-Seminari/Valutazione-formativa]]
+- [[TTP-nonpub/tre+uno/Valutazione-formativa 🇮🇹]]
 - [[../capitoli-tag/uno/index|Capitolo Uno]]

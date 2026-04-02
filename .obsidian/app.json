@@ -2,5 +2,11 @@
   "showUnsupportedFiles": true,
   "alwaysUpdateLinks": true,
   "showLineNumber": true,
-  "smartIndentList": true
+  "smartIndentList": true,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
