@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>tigr</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="LAB-LILEC"/><meta property="og:title" content="tigr"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="tigr"/><meta name="twitter:description" content="Seminario fake su lessico e ripetizione."/><meta property="og:description" content="Seminario fake su lessico e ripetizione."/><meta property="og:image:alt" content="Seminario fake su lessico e ripetizione."/><meta property="twitter:domain" content="laboratoriosperimentale.github.io/Seminari-Lab-Lilec"/><meta property="og:url" content="https://laboratoriosperimentale.github.io/Seminari-Lab-Lilec/Lista-Seminari/tigr---It"/><meta property="twitter:url" content="https://laboratoriosperimentale.github.io/Seminari-Lab-Lilec/Lista-Seminari/tigr---It"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Seminario fake su lessico e ripetizione."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL21udC9EQVRBL2hvbWUvY2FyY2FyL0RvY3VtZW50cy8ybmRCUi8ybmRCckdpdFJlcG8vU2VtaW5hcmlMYWJMaUxlQy9xdWFydHotc2l0ZS9xdWFydHotNC9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://laboratoriosperimentale.github.io/Seminari-Lab-Lilec/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://laboratoriosperimentale.github.io/Seminari-Lab-Lilec/Lista-Seminari/tigr---It-og-image.webp"/><meta property="og:image:url" content="https://laboratoriosperimentale.github.io/Seminari-Lab-Lilec/Lista-Seminari/tigr---It-og-image.webp"/><meta name="twitter:image" content="https://laboratoriosperimentale.github.io/Seminari-Lab-Lilec/Lista-Seminari/tigr---It-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="Lista-Seminari/tigr---It"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">LAB-LILEC</a></h2><div class="spacer mobile-only"></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>{let name=(node.displayName??\&quot;\&quot;).toLowerCase(),slug=(node.data?.slug??\&quot;\&quot;).toLowerCase();return!(name===\&quot;_intersezioni\&quot;||slug===\&quot;topics/_intersezioni\&quot;||slug.startsWith(\&quot;topics/_intersezioni/\&quot;))}&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-21" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><header><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></header><div class="popover-hint"></div></div><article class="popover-hint"><h2 id="introduzione-al-corpus-tigr">Introduzione al corpus TIGR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#introduzione-al-corpus-tigr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Il corpus d’italiano parlato TIGR è stato raccolto negli anni 2021 e 2022  nei cantoni svizzeri Ticino e Grigioni (da qui il nome) e nasce all’interno di un progetto di ricerca condotto dall’Università della Svizzera Italiana (USI), <strong>InfinIta - La categorizzazione delle fonti di informazione nell’interazione faccia a faccia. Una indagine basata sul corpus di italiano parlato TIGR</strong> (per l’abstract e le pubblicazioni scientifiche: <a href="https://data.snf.ch/grants/grant/192771" class="external">https://data.snf.ch/grants/grant/192771<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>). Il progetto è stato finanziato dalla Swiss National Science Foundation (SNSF) e terminerà il 31 agosto 2025.</p>
+<p>“l TIGR documenta interazioni faccia a faccia in situazioni non sperimentali di vario genere: conversazioni a tavola, preparazione di cibo, lezioni e incontri di tutoring, interviste, per 23,5 ore in totale. Queste interazioni sono documentate attraverso non solo registrazioni audio, trascrizioni e dati sociolinguistici, ma anche <strong>registrazioni video</strong>” (<a href="https://sharetigr.usi.ch/it/st/corpus" class="external">link<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>)</p>
+<p>Per condividere il corpus con la comunità scientifica secondo i principi FAIR è nato <a href="https://sharetigr.usi.ch/it/st/corpus" class="external"><strong>ShareTIGR</strong><svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, un progetto specificamente dedicato agli <em>open research data</em> (ORD). In ShareTIGR, verranno elaborati ulteriormente i dati, eliminando certe informazioni personali, preparando file audio-video maneggevoli, convertendo e formattando le trascrizioni, redigendo descrizioni a vari livelli e preparando metadati leggibili dai motori di ricerca. Infine, tutti i file verranno depositati su <a href="https://www.swissubase.ch/en/" class="external">SWISSUbase<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, un repositorio scientifico svizzero per le scienze sociali e la linguistica. Gli utenti interessati potranno così scaricare i documenti e usarli ai fini delle proprie ricerche, dopo essersi registrati e aver firmato un accordo che precisa le modalità e gli scopi del riuso.
+Dopo il deposito su repositorio, un ulteriore scenario di condivisione sarà quello di inserire i documenti su una piattaforma che permetta la loro consultazione e analisi online.</p>
+<p>In parallelo al lavoro sui dati, l’esperienza di raccolta del corpus la è stata condivisa tramite il <a href="https://sharetigr.usi.ch/it/notizie-eventi/blog" class="external">blog<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>, a più voci e in due lingue (italiano e inglese).</p>
+<p>Per le pubblicazioni basate sui dati del TIGR si veda:
+<a href="https://sharetigr.usi.ch/it/st/publications" class="external">Pubblicazioni e presentazioni nelle quali sono stati usati i dati TIGR<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<h2 id="il-progetto-infinita-perché-è-stato-creato-il-corpus-tigr">Il progetto InfinIta: perché è stato creato il corpus TIGR?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#il-progetto-infinita-perché-è-stato-creato-il-corpus-tigr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="le-domande-di-ricerca">Le domande di ricerca<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#le-domande-di-ricerca" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Il corpus TIGR è nato per cercare di rispondere a tre domande che riguardano la categorizzazione delle fonti di informazione nell’italiano parlato:</p>
+<ol>
+<li>
+<p>A livello semiotico, attraverso quali risorse (indicatori e costruzioni di evidenzialità, strategie discorsive, strategie multimodali, implicature) viene comunicata la fonte dell’informazione?</p>
+</li>
+<li>
+<p>A livello semantico, quali distinzioni relative alla fonte dell’informazione diventano rilevanti? Categorizzazioni specifiche, ad esempio: ‘Il presidente non è in forma. <em>Lo ha detto il suo portavoce durante la conferenza stampa di ieri</em>’ / ‘<em>È evidente dal modo in cui si è comportato durante il dibattito televisivo di ieri</em>’ rispetto a categorizzazioni generiche, ad esempio: ‘<em>Ho sentito dire che</em>/ <em>A quanto pare</em> il presidente non è in forma’</p>
+</li>
+<li>
+<p>A livello pragmatico, come la categorizzazione delle fonti di informazione contribuisce al posizionamento epistemico?</p>
+</li>
+</ol>
+<h3 id="perché-un--corpus-video-dellitaliano-parlato">Perché un  <em>corpus video</em> dell’italiano parlato?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#perché-un--corpus-video-dellitaliano-parlato" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Sono diversi i motivi che hanno spinto alla creazione di un corpus video:</p>
+<ol>
+<li>
+<p>Il video consente lo studio dell’uso integrato di mezzi verbali, mezzi multimodali e risorse situazionali (oggetti a disposizione in una situazione che diventano funzionali alla comunicazione). Nello specifico, la disponibilità di dati videoregistrati permette di:</p>
+<ul>
+<li>Individuare le <strong>fonti in situ</strong>, cioè le fonti delle informazioni aquisite durante l’interazione in corso grazie alla percezione diretta e alle inferenze basate su indizi percettivi: <em>‘Hanno suonato alla porta, sarà il postino’</em>, <em>‘Questo ragno si muove… sarà ancora vivo’</em> sono esempi costruiti ad hoc sull’evidenzialità basati su indizi percettivi. Spesso nella letteratura sull’evidenzialità gli esempi sono costruiti a tavolino. Quando però abbiamo dei dati video a disposizione possiamo capire <strong>in modo empirico</strong> quali stimoli eventualmente presenti nella situazione diventano funzionali all’espressione della fonte.</li>
+<li>Identificare il ruolo della direzione dello sguardo e di certi gesti nel posizionamento epistemico.</li>
+<li>Comprendere la costruzione del riferimento deittico. Ad esempio, <em>qui</em>, <em>qua</em>, etc., interpretabili meglio quando sono presenti delle immagini a cui poter fare riferimento.</li>
+</ul>
+</li>
+<li>
+<p>La presenza di un riferimento video consente una prospettiva più ricca e dinamica su come la grammatica funzioni e si sviluppi nel contesto di interazioni reali e multi-modali. Infatti, la grammatica (come la sintassi o i segnali discorsivi) da un lato è uno strumento che organizza l’interazione, ma dall’altro può essere influenzata o “emergere” dalle strutture sequenziali delle interazioni, cioè da come si sviluppano e si susseguono gli scambi comunicativi nel tempo. Dato che le interazioni non sono mediate solo dalle parole, ma anche dai gesti, i movimenti o le espressioni facciali, <em>i video permettono di osservare come si sviluppano le interazioni nel loro contesto sequenziale completo</em>. Inoltre, consentono di analizzare la <strong>multi-attività</strong>, cioè situazioni in cui il discorso si intreccia con altre attività parallele (ad esempio, una persona che parla mentre cucina o che gesticola durante la conversazione).</p>
+</li>
+<li>
+<p>La variazione diafasica viene meglio studiata grazie al video. È infatti possibile studiare quelle interazioni che generalmente non vengono prese in considerazione se si dispone solamente dell’audio in quanto con la sola documentazione audio si perdono troppe informazioni. Un esempio potrebbe essere l’analisi dell’interazione durante una lezione di guida, inutile se l’interazione è documentata solo tramite registrazione audio.</p>
+</li>
+</ol>
+<h3 id="composizione-del-corpus">Composizione del corpus<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#composizione-del-corpus" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Per conoscere la struttura del TIGR nel contesto del progetto InfinIta e lo statuto del corpus tra i vari corpora linguistici esistenti, si rimanda all’articolo:</p>
+<p>{%
+include citation.html
+lookup=“Composizione del TIGR”
+%}</p>
+<p>{% include pdf_card.html
+title=“Design iniziale del corpus TIGR (2020)”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“12”
+thumb_url=“images/seminar-images/tigr/thumbs/slide12.png”
+%}</p>
+<p>Secondo il disegno iniziale, l’idea era di includere diversi tipi di interazione: intervista, conversazione a tavola, preparazione di un pasto, lavori di gruppo e lezioni; per un totale di 28 ore e 39 eventi.</p>
+<p>Ci sono poi stati dei riadattamenti del design del corpus a causa dell’avvento della Pandemia di COVID-19. Per saperne di più sulle problematiche nella raccolta dei dati legate alla Pandemia, si rimanda al seguente articolo:</p>
+<p>{%
+include citation.html
+lookup=“Raccogliere dati linguistici ai tempi del COVID-19”
+%}</p>
+<p>Alla fine del processo sono state ottenute 23h 30’ di videoregistrazione, per un totale di 23 eventi e 115 parlanti.</p>
+<p>{% include pdf_card.html
+title=“La versione finale del corpus TIGR”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“14”
+thumb_url=“images/seminar-images/tigr/thumbs/slide14.png”
+%}</p>
+<p>Per quanto riguarda i contesti didattici, sono state registrate lezioni di tre tipi:</p>
+<ul>
+<li>sessioni di tutoring in architettura</li>
+<li>lezioni di teatro, di musica e di restauro</li>
+<li>lezioni di glottodidattica e di cultura generale nella scuola superiore in cui gli studenti si cimentavano in lavori di gruppo e presentazioni.</li>
+</ul>
+<p>COLLEGAMENTO IPERTESTUALE AGLI ESEMPI</p>
+<p>Ai parametri del design iniziale sono stati aggiunti l’<strong>istituzionalità</strong> e il <strong>ruolo dei partecipanti</strong>. Esistono tipi di interazione istituzionali, come l’intervista o una lezione, e tipi di interazione non istituzionali, come la preparazione di un pasto o la conversazione a tavola. Il parametro dell’istituzionalità influisce sul ruolo dei partecipanti, che può essere simmetrico, asimmetrico o variabile. Prendendo in considerazione quest’ultimo parametro, è possibile studiare la dimensione epistemica in relazione al ruolo dei partecipanti, e quindi capire, ad esempio, se un rapporto di asimmetria gerarchica determina anche un’asimmetria epistemica.
+Il movimento dei partecipanti e la manipolazione degli oggetti hanno a che fare con la multi-attività, la quale ha un effetto sull’organizzazione sequenziale del discorso.</p>
+<h2 id="parlanti-del-tigr">Parlanti del TIGR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#parlanti-del-tigr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="reclutamento-dei-parlanti">Reclutamento dei parlanti<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reclutamento-dei-parlanti" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Il contatto e il reclutamento dei partecipanti sono descritti in dettaglio nel seguente articolo<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref aria-describedby="footnote-label" class="internal alias">1</a></sup>:</p>
+<p>{%
+include citation.html
+lookup=“Il lavoro sul campo: ricerca e contatto dei partecipanti”
+%}</p>
+<p>Il requisito fondamentale che i parlanti dovevano possedere per essere scelti come partecipanti era di essere <strong>italofoni</strong>. Non era necessario che la lingua italiana fosse la lingua madre (L1).</p>
+<p>Per un approfondimento sul questionario che i parlanti hanno dovuto compilare:</p>
+<p>{%
+include citation.html
+lookup=“Digitisation of the TIGR participant questionnaires”
+%}</p>
+<h4 id="dichiarazioni-di-consenso-informato-esigenze-della-ricerca-esigenze-legali-e-questioni-etiche">Dichiarazioni di consenso informato: esigenze della ricerca, esigenze legali e questioni etiche<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dichiarazioni-di-consenso-informato-esigenze-della-ricerca-esigenze-legali-e-questioni-etiche" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Per redigere la dichiarazione di consenso informato è stato utilizzato un modello interno all’USI e sono stati consultati la Commissione etica e il Servizio legale dell’università.
+Inoltre, si è fatto riferimento a normative, come la Legge federale sulla protezione dei dati, e linee guida, come quelle indicate da FORS.
+Per una riflessione approfondita sulle tematiche legali, si rimanda all’articolo:</p>
+<p>{%
+include citation.html
+lookup=“Social interaction is among people. Legal, technical, and ethical explorations about personal information and its removal in talk-in-interaction as data”
+%}</p>
+<p>Prevedere fin dall’inizio la pubblicazione dei dati (video) richiede una riflessione su due tematiche principali:</p>
+<ol>
+<li>Come gestire la deidentificazione dei parlanti?</li>
+<li>Come descrivere in modo informativo ma non limitante il futuro riuso dei dati?</li>
+</ol>
+<p>Qui di seguito, la struttura del documento di dichiarazione di consenso informato che è stato fatto firmare ai partecipanti.</p>
+<h5 id="parte-a-documento-informativo">Parte A. Documento informativo<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#parte-a-documento-informativo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ol>
+<li>Introduzione</li>
+<li>Descrizione del progetto di ricerca per un pubblico non specialista</li>
+<li>Descrizione dell’evento e modalità di video-registrazione</li>
+<li>Confidenzialità e protezione dei dati</li>
+<li>Conservazione e utilizzo dei dati</li>
+<li>Diritti dei partecipanti allo studio</li>
+<li>Contatti</li>
+</ol>
+<h5 id="parte-b-consenso-informato">Parte B. Consenso informato<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#parte-b-consenso-informato" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<p>Ogni partecipante registrata/o ha espresso il proprio consenso all’uso dei dati dopo essere messa/o a conoscenza degli scopi dell’indagine e delle modalità di diffusione dei dati. In caso il parlante avesse deciso di non essere riconoscibile, le opzioni di deidentificazione tra cui poteva scegliere erano due:</p>
+<ul>
+<li><strong>default</strong>: pseudonimi nella trascrizione, silenzi nella traccia audio, misure di deidentificazione nei metadati</li>
+<li><strong>misure supplementari</strong>: alterazione della voce nella traccia audio (6 richieste), applicazione di filtri nella traccia video (15 richieste)</li>
+</ul>
+<p>Per saperne di più a proposito della stesura del documento di dichiarazione di consenso informato da parte del team di InfinIta, si legga l’articolo:</p>
+<p>{%
+include citation.html
+lookup=“Dichiarazioni di consenso informato”
+%}</p>
+<h4 id="misure-di-deidentificazione-dei-dati">Misure di deidentificazione dei dati<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#misure-di-deidentificazione-dei-dati" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Per quanto riguarda le misure di deidentificazione dei partecipanti, sono stati adottati diversi provvedimenti:</p>
+<ul>
+<li>Ad ogni partecipante è stato attrbuito un codice informatore nel formato inf-N.</li>
+<li>L’età è stata ridotta a un intervallo.</li>
+<li>Per quanto riguarda le informazioni sul luogo di provenienza, è stato inserito lo Stato (ad esempio, Svizzera) e il cantone (o la regione nel caso dell’Italia).</li>
+<li>il luogo di registrazione viene descritto solamente dal Cantone e dalle dimensioni del centro abitato (> o &lt;10,000 abitanti).</li>
+</ul>
+<p>Inoltre, come è riportato sul sito del corpus alla voce “Deidentificazione”:</p>
+<blockquote>
+<p>in vista della loro condivisione sul repositorio, i documenti video saranno deidentificati in Adobe Premiere tramite l’applicazione di effetti video (p.es. Gaussian blur, Find edges) secondo i desideri espressi dai parlanti nelle loro dichiarazioni di consenso. Nelle tracce audio, si altereranno alcune voci secondo i desideri espressi nelle dichiarazioni di consenso e si sostituirà con rumore certi nomi e indicazioni temporali, nello specifico una serie di nomi di persone, istituzioni e luoghi nonché certe date che potrebbero facilitare l’identificazione delle e dei partecipanti. Questi interventi sono stati preparati in ELAN<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref aria-describedby="footnote-label" class="internal alias">2</a></sup> tramite l’annotazione dei passi problematici come <em>name</em> in un’apposita traccia. Si userà uno script per leggere i tempi iniziali e finali dei segmenti annotati e istruire il programma Praat a elaborare l’insieme delle tracce audio negli intervalli in questione, cancellando il suono originale e inserendo frammenti di rumore. Nelle trascrizioni, l’informazione personale è stata sostituita da pseudonimi. I nomi dei partecipanti sono stati sostituiti da pseudonimi di simile lunghezza. Al posto di altre informazioni personali sono state inserite le diciture <em>personname</em> / <em>institutionname</em> / <em>placename</em> / <em>datename</em> accompagnate da indici, così da permettere riferimenti multipli alla stessa entità all’interno di una trascrizione.</p>
+</blockquote>
+<p>Di seguito sono riportati alcuni esempi:</p>
+<p>{% include pdf_card.html
+title=“Misure di de-identificazione”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“53”
+thumb_url=“images/seminar-images/tigr/thumbs/slide53.png”
+%}</p>
+<p>{% include pdf_card.html
+title=“Misure di de-identificazione”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“54”
+thumb_url=“images/seminar-images/tigr/thumbs/slide54.png”
+%}</p>
+<p>{% include pdf_card.html
+title=“Misure di de-identificazione”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“55”
+thumb_url=“images/seminar-images/tigr/thumbs/slide55.png”
+%}</p>
+<h3 id="dati-sociolinguistici-ricavati">Dati sociolinguistici ricavati<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dati-sociolinguistici-ricavati" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Di seguito si riportano alcuni grafici sui principali dati sociolinguistici che riguardano il campione di parlanti considerato.</p>
+<h4 id="genere-e-età">Genere e età<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#genere-e-età" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Come si può vedere dal grafico a sinistra,  il corpus è abbastanza bilanciato con una presenza femminile (53%) di poco superiore a quella maschile (47%). Nel grafico a destra vengono mostrate le fascie d’età, con una sovrarappresentazione della fascia degli studenti universitari (20-29).</p>
+<p>{% include pdf_card.html
+title=“Dati sociolinguistici: genere e età”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“31”
+thumb_url=“images/seminar-images/tigr/thumbs/slide31.png”
+%}</p>
+<h4 id="origine-dei-parlanti">Origine dei parlanti<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#origine-dei-parlanti" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Qui vengono mostrati i dati specifici sulle regioni italiane e sui cantoni svizzeri in cui i parlanti hanno frequentato la scuola elementare. Nonostante un certo bias geografico per quanto riguarda l’Italia, con Lombardia e Piemonte in testa, diverse regioni sono rappresentate, sia del centro sia del sud.
+In merito alla Svizzera, la maggior parte dei parlanti ha frequentato la scuola elementare nei cantoni Ticino e Grigioni.</p>
+<p>{% include pdf_card.html
+title=“Dati sociolinguistici: origine dei parlanti”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“32”
+thumb_url=“images/seminar-images/tigr/thumbs/slide32.png”
+%}</p>
+<p>{% include pdf_card.html
+title=“Dati sociolinguistici: origine dei parlanti”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“33”
+thumb_url=“images/seminar-images/tigr/thumbs/slide33.png”
+%}</p>
+<h4 id="luogo-di-lavoro-o-studio-in-svizzera">Luogo di lavoro o studio in Svizzera<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#luogo-di-lavoro-o-studio-in-svizzera" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>La maggior parte dei parlanti svolge la sua attività principale (studio o lavoro) in Ticino (64%). Al secondo posto troviamo i Grigioni (34%).</p>
+<p>{% include pdf_card.html
+title=“Dati sociolinguistici: luogo di lavoro o studio”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“34”
+thumb_url=“images/seminar-images/tigr/thumbs/slide34.png”
+%}</p>
+<h4 id="repertorio-linguistico">Repertorio linguistico<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#repertorio-linguistico" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>La maggior parte dei parlanti ha dichiarato di essere plurilingue (due, tre o addirittura più di quattro lingue nel proprio repertorio). La lista delle lingue conosciute dai partecipanti sono riportate nel grafico di destra.</p>
+<p>{% include pdf_card.html
+title=“Repertorio linguistico dei partecipanti”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“35”
+thumb_url=“images/seminar-images/tigr/thumbs/slide35.png”
+%}</p>
+<h4 id="istruzione-e-professione">Istruzione e professione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#istruzione-e-professione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il livello di istruzione principale è la scuola secondaria di secondo grado. Trattandosi per la maggio parte di studenti universitari, era l’ultimo grado di istruzione completato.</p>
+<p>{% include pdf_card.html
+title=“Livello di istruzione”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“36”
+thumb_url=“images/seminar-images/tigr/thumbs/slide36.png”
+%}</p>
+<h2 id="luoghi-dove-sono-stati-registrati-gli-eventi-del-tigr">Luoghi dove sono stati registrati gli eventi del TIGR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#luoghi-dove-sono-stati-registrati-gli-eventi-del-tigr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Come è stato detto, la registrazione delle interazioni è avvenuta nei cantoni Ticino e Grigioni. Le località all’interno dei due cantoni sono determinate in modo opportunistico in base alla disponibilità dei parlanti. In una seconda fase della raccolta, la presa di contatto ad hoc con le istituzioni scolastiche ha permesso di ampliare la copertura geografica del corpus.</p>
+<p>In Ticino sono stati registrati 9 eventi in 7 piccoli centri e altri 9 eventi in 2 grandi centri, per un totale di 18 eventi in 9 località.
+Nei Grigioni sono stati registrati 4 eventi in 1 piccolo centro e altri 4 eventi in 1 grande centro, per un totale di 5 eventi in 2 località.</p>
+<p>Si precisa che il corpus non è disegnato per documentare la variazione diatopica dell’italiano parlato in Svizzera.</p>
+<h2 id="impostazione-tecnica-delle-registrazioni-post-produzione-e-trascrizione">Impostazione tecnica delle registrazioni, post-produzione e trascrizione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#impostazione-tecnica-delle-registrazioni-post-produzione-e-trascrizione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strumentazione-utilizzata-e-post-produzione">Strumentazione utilizzata e post-produzione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strumentazione-utilizzata-e-post-produzione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>La prassi era quella di andare sul luogo della registrazione, installare i dispositivi e lasciare che i parlanti interagissero da soli. Solamente nelle interazioni didattiche e nelle interviste erano presenti anche i ricercatori.
+Una volta conclusesi le interazioni, i ricercatori venivano contattati dai partecipanti tramite Whatsapp.</p>
+<p>In particolare, come viene illustrato sul sito dell’USI alla voce “Registrazioni audio e video”:</p>
+<blockquote>
+<p>per ogni evento del TIGR sono state fatte due riprese video da angolazioni differenti, usando delle telecamere Sony HXR-NX80//C. Le tracce audio sono da due a sei, secondo il numero di partecipanti all’evento. Sono state registrate con da due a quattro registratori tascabili Tentacle Track E muniti di microfono da bavero e con un microfono esterno Sony EGM-VG1 montato su una delle telecamere. Nel caso specifico dell’interazione in classe, l’équipe ha aggiunto un ulteriore microfono, del tipo Neumann TLM 127 ni-K, collocato in posizione centrale e collegato con l’altra telecamera.
+I vari dispositivi sono stati sincronizzati prima dell’inizio della registrazione per ottenere una corrispondenza più precisa possibile tra immagine e suono. A questo fine sono stati impiegati generatori di timecode della marca Tentacle. Tali generatori sono parte integrante degli audioregistratori Tentacle Track E, che registrano direttamente un timecode numerico. Con le telecamere sono invece stati usati i dispositivi esterni Tentacle Sync, collegati tramite le connessioni per microfoni delle telecamere. Essi generano del timecode acustico che durante le riprese viene registrato nel corrispondente canale audio. Una componente cruciale del sistema Tentacle è un’applicazione mobile che comunica con tutti i dispositivi tramite bluetooth e permette di sincronizzarli da remoto nonché di avviare e interrompere le registrazioni.
+Dopo le riprese, i file video sono stati elaborati dal programma Tentacle Timecode Tool per Windows. Il programma legge il segnale acustico che codifica il timecode, lo converte in informazione numerica e infine lo cancella, mantenendo solo il timecode numerico. In un’ulteriore fase di post-produzione, tutti i file video e audio sono sono stati importati in un progetto Adobe Premiere, dove sono stati allineati sulla base del timecode numerico e sono stati tagliati per ottenere tracce di uguale durata.
+Le impostazioni tecniche di ogni evento e altri aspetti inerenti alla collezione dei dati sono stati descritti in una scheda, talvolta corredata da fotografie. La scheda registra la data e il luogo dell’evento, elenca i dispositivi usati e i codici identificatori anonimi dei partecipanti, riporta eventuali desideri di deidentificazione e contiene appunti su altri aspetti della situazione che l’équipe sul campo giudicava potenzialmente rilevanti per l’interpretazione dei dati. Una funzione importante della scheda è di associare i codici identificatori dei parlanti a una descrizione del loro aspetto e ai nomi dei microfoni da bavero. Essa contiene, infine, appunti su eventuali problemi tecnici riscontrati durante l’elaborazione dei file tramite TTT e in Adobe Premiere.</p>
+</blockquote>
+<h3 id="la-trascrizione">La trascrizione<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#la-trascrizione" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Per la trascrizione è stato utilizzato il software ELAN, v. 6.7.
+È stato inoltre adottato il sistema GAT2 (Gesprächsanalytische Transkriptionssystem):</p>
+<ul>
+<li>funzionale a una trascrizione tramite software e machine-readable</li>
+<li>integrato in editor digitali (per esempio EXMARaLDA)</li>
+<li>dotato di tre livelli di granularità: minimal script, basic script e fine script (quello più dettagliato e usato per il corpus TIGR)</li>
+</ul>
+<p>Alla guida interna sono stati aggiunti:</p>
+<ul>
+<li>una lista di lemmi per uniformare la grafia delle interiezioni</li>
+<li>la trascrizione del raddoppiamento fonosintattico (ex., <em>va bbene</em>, <em>e nniente</em> )</li>
+<li>l’uso del simbolo ~ per le interruzioni udibili di una parola (in particolare, glottal stop), per esempio in esitazioni o ripartenze</li>
+</ul>
+<p>Di seguito sono riportate alcune delle convenzioni GAT2 utilizzate nella trascrizione delle registrazioni</p>
+<p>{% include pdf_card.html
+title=“Convenzioni GAT2”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“49”
+thumb_url=“images/seminar-images/tigr/thumbs/slide49.png”
+%}</p>
+<p>{% include pdf_card.html
+title=“Convenzioni GAT2”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“50”
+thumb_url=“images/seminar-images/tigr/thumbs/slide50.png”
+%}</p>
+<p>Da notare l’annotazione del comportamento non verbale (guarda nell’immagine sopra in “Laughter and crying”) che funziona con la logica del tag.</p>
+<p>Inoltre, sono state adottate convenzioni di trascrizione multimodale di Modada per il tier “ambient noises”, come nel seguente esempio:</p>
+<p>{% include pdf_card.html
+title=“Ambient Noises”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“52”
+thumb_url=“images/seminar-images/tigr/thumbs/slide52.png”
+%}</p>
+<h4 id="la-segmentazione-in-elan">La segmentazione in Elan<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#la-segmentazione-in-elan" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>La segmentazione non rappresenta necessariamente un’unità significativa sul piano linguistico.
+La segmentazione è stata pensata per essere funzionale ad una trascrizione accurata, come nel caso di sovrapposizioni multiple.
+COLLEGAMENTO IPERTESTUALE 1:00:04 a 1:02:14
+Il problema di come trascrivere le sovrapposizioni si pone in particolare nel caso degli schismi. Non si tratta solamente di conversazioni parallele, ma a volte c’è anche uno spostamento associato. Facciamo l’esempio delle conversazioni a tavola: quando due persone si alzano e vanno in cucina e altre due rimangono a tavola si hanno due conversazioni parallele. La stessa cosa accade durante le lezioni di restauro quando due gruppi lavorano in due parti diverse della chiesa.</p>
+<p>COLLEGAMENTO IPERTESTUALE 1:02:14 a 1:04:03</p>
+<h4 id="la-derivazione-di-trascrizioni-in-formato-testo-in-stile-dialogo-teatrale">La derivazione di trascrizioni in formato testo in stile “dialogo teatrale”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#la-derivazione-di-trascrizioni-in-formato-testo-in-stile-dialogo-teatrale" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Come esportare la trascrizione da ELAN e creare un formato leggibile?
+Come abbiamo visto, la prima trascrizione avviene su ELAN. Da questa trascrizione possono derivate altri due tipi di trascrizione:</p>
+<ol>
+<li>una trascrizione in stile “dialogo teatrale” e formato <code>txt</code>;</li>
+<li>una trascrizione in versione tokenizzata, di cui si parlerà nel paragrafo successivo.</li>
+</ol>
+<p>{% include pdf_card.html
+title=“Trascrizione in stile ‘dialogo teatrale’”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“59”
+thumb_url=“images/seminar-images/tigr/thumbs/slide59.png”
+%}</p>
+<p>Il primo tipo di trascrizione offre un’approssimazione grafica dell’organizzazione della conversazione in turni e una buona base per un’analisi sequenziale.
+Inoltre, costituisce un input per l’annotazione delle fonti di informazione all’interno del progetto InfinIta, eseguita nel programma <a href="https://inception-project.github.io/" class="external">INCEpTION<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.
+Infine, il formato <code>txt</code> è semplice e interoperabile.</p>
+<p>Come fare per passare da una trascrizione ELAN a una trascrizione di questo tipo?
+Si può esportare da ELAN la trascrizione in formato testo “tradizionale”, con o senza timecode e con la formattazione automatica dei turni.
+Però sono stati riscontrati alcuni problemi, tra cui: se si intende esportare la trascrizione con il timecode, il file risulta illeggibile e la messa in sequenza automatica dei turni non è sempre intuitiva.
+La soluzione è stata quella di condurre una <strong>procedura semi-automatica (script Python)</strong>: la trascrizione veniva esportata da ELAN come trascrizione in formato “tradizionale” e con l’allineamento verticale delle parentesi quadre. Attraverso degli script sono stati eliminati i timecode tranne quelli che segnano i tempi iniziali dei segmenti (creati su ELAN), che compaiono all’incirca ogni 10 secondi. Sono, poi, state collocate delle ancore “((TC))” nel testo, come si vede in questo esempio</p>
+<p>{% include pdf_card.html
+title=“Ancore”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“61”
+thumb_url=“images/seminar-images/tigr/thumbs/slide61.png”
+%}</p>
+<p>Sono stati eliminati i nomi di parlanti superflui e sono stati concatenati i segmenti e si è formattato manualmente le trascrizioni quando presentavano sovrapposizioni di più di due parlanti</p>
+<h4 id="verso-una-versione-tokenizzata-delle-trascrizioni">Verso una versione tokenizzata delle trascrizioni<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#verso-una-versione-tokenizzata-delle-trascrizioni" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>I due tipi di trascrizione, quella originale in ELAN e quella in stile “dialogo teatrale” in formato <code>txt</code>, non sono tokenizzate.</p>
+<p>Cos’è la tokenizzazione? È la divisione di un testo in “token”, cioè unità linguisticamente pertinenti di varia complessità. È indispensabile per l’inserimento in un database e ai fini della ricerca lessicometrica, morfo-sintattica, fonologica, ecc. Fornisce, infine, gli input per le procedure di annotazione automatica (per esempio, l’annotazione delle parti del discorso e la lemmatizzazione)</p>
+<p>Per questa procedura di tokenizzazione delle trascrizioni si sta collaborando con l’azienda <a href="https://linguisticbits.de/" class="external"><em>Linguisticbits</em><svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> del Dr. Thomas Schmidt.
+La procedura comprende i seguenti step, elencati in ordine di precedenza:</p>
+<ol>
+<li>Ricongiungimento dei frammenti di parola creati ai confini dei segmenti in ELAN, che avverrà in maniera in parte automatica, grazie all’uso di un lessico estratto da ItTenTen, e in parte manuale</li>
+<li>Concatenazione dei segmenti ELAN in “contributi” (si tratta di un’approssimazione dell’unità “turno”)</li>
+<li>Divisione automatica dei contributi in parole</li>
+<li>Conversione in un documento XML conforme all’<a href="https://standards.clarin.eu/sis/views/view-format.xq?id=fTEISpoken" class="external">ISO/TC 37/SC 4, 2016<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a><sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref aria-describedby="footnote-label" class="internal alias">3</a></sup>. A proposito degli standard ISO per la trascrizione della lingua parlata si cita l’articolo <em>The TEI-based ISO Standard ‘Transcription of spoken language’ as an Exchange Format within CLARIN and beyond</em>:
+{%
+include citation.html
+lookup=“The TEI-based ISO Standard ‘Transcription of spoken language’ as an Exchange Format within CLARIN and beyond”
+%}</li>
+</ol>
+<p>Per saperne di più sul processo di trascrizione si rimanda ai seguenti articoli presenti nel blog:</p>
+<p>{%
+include citation.html
+lookup=“Morfologia delle trascrizioni, parte I: leggibili in che modo?”
+%}</p>
+<p>{%
+include citation.html
+lookup=“Morfologia delle trascrizioni, parte II: codificare il tempo”
+%}</p>
+<p>{%
+include citation.html
+lookup=“Morfologia delle trascrizioni, parte III: il primo script”
+%}</p>
+<p>{%
+include citation.html
+lookup=“Morfologia delle trascrizioni, parte IV: allineamento temporale e segmentazione”
+%}</p>
+<p>{%
+include citation.html
+lookup=“Morfologia delle trascrizioni, parte V: gestire le sovrapposizioni”
+%}</p>
+<p>{%
+include citation.html
+lookup=“Morfologia delle trascrizioni, parte VI: uso di script in fase di impaginazione e di revisione”
+%}</p>
+<h2 id="condivisione-dei-dati">Condivisione dei dati<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#condivisione-dei-dati" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>La condivisione e il riuso dei dati è un ciclo: dei ricercatori producono dati per altri ricercatori che li riusano.
+I due momenti di condivisione e riuso sono rappresentati graficamente nelle immagini qui sotto:</p>
+<p>{% include pdf_card.html
+title=“Condivisione dei dati”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“65”
+thumb_url=“images/seminar-images/tigr/thumbs/slide65.png”
+%}</p>
+<p>{% include pdf_card.html
+title=“Riuso dei dati”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“66”
+thumb_url=“images/seminar-images/tigr/thumbs/slide66.png”
+%}</p>
+<p>Dal punto di vista tecnico le infrastrutture digitali (sono quelle che si vedono nel mezzo) sono cruciali in questo processo.
+Nella condivisione e nel riuso dei dati sono contemplati tre mezzi:</p>
+<ol>
+<li>repositorio</li>
+<li>piattaforma per la consultazione online</li>
+<li>l’invio dei dati a qualcuno tramite e-mail,</li>
+</ol>
+<p>Un quarto mezzo potrebbe essere rappresentato dalle “data sessions”, ovvero incontri faccia a faccia dove si lavora sui dati.</p>
+<p>L’invio di dati tramite e-mail non assicura che i dati siano reperibili e accessibili a chi non li conosca già. Quindi si considera questa modalità non aderente ai principi FAIR, come invece sono le prime due, cioè il repositorio e la piattaforma digitale. Infatti, il catalogo e la regolazione degli accessi assicurano la reperibilità e l’accesso ai dati.</p>
+<h3 id="il-repositorio">Il repositorio<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#il-repositorio" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Nel caso del corpus TIGR verrà usato il <strong>repositorio LaRS</strong>, la sezione linguistica del repositorio <a href="https://www.swissubase.ch/en/" class="external">SWISSUbase<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Un articolo di approfondimento in inglese per chi fosse interessato:</p>
+<p>{%
+include citation.html
+lookup=“Exploring LaRS @ SWISSUbase”
+%}</p>
+<p>Il repositorio LaRS è organizzato secondo tre livelli gerarchici:</p>
+<ol>
+<li>Studi</li>
+<li>Dataset (entità scaricabile)</li>
+<li>Documenti</li>
+</ol>
+<p>Ad ogni livello ci sono dei metadati, alcuni obbligatori e altri facoltativi, che l’utente del repositorio deve inserire.</p>
+<p>{% include pdf_card.html
+title=“LaRS”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“69”
+thumb_url=“images/seminar-images/tigr/thumbs/slide69.png”
+%}</p>
+<p>Nell’immagine sopra i dataset che verrano caricati.
+Ci sarà un dataset generale di documentazione che contiene la documentazione del corpus intero (documentazione metodologica, consensi informati, ecc.).
+Ci saranno poi i dataset dei singoli eventi. Di ogni evento ci sarà una versione leggera e una versione completa (che contiene le singole tracce audio). All’interno di ciascun dataset saranno raccolti dati video, dati audio, le trascrizioni e file di metadati.
+L’ultimo dataset sarà un dataset di sole trascrizioni, pensando a coloro che hanno la necessità di fare ricerca sulle trascrizioni e non hanno bisogno di visionare o di ascoltare i file multimediali.</p>
+<p>Il repositorio assegna un DOI a ciascun dataset.
+Il dataset è l’unità scaricabile.</p>
+<p>Per conoscere in dettaglio la costruzione dei vari dataset su LaRS, si legga:</p>
+<p>{%
+include citation.html
+lookup=“Grouping the TIGR data for reuse”
+%}</p>
+<h4 id="metadati">Metadati<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#metadati" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Il repositorio mette a disposizione dei campi predefiniti, alcuni obbligatori alcuni facoltativi. Si è pensato di aggiungere anche delle tabelle (in formato CSV) con i metadati per ogni singolo evento.</p>
+<p>{% include pdf_card.html
+title=“Documenti con Metadati”
+authors=“Johanna Miecznikowski, Elena Battaglia”
+date=“06/11/2024”
+pdf_url=“/materials/tigr/slides.pdf”
+page=“70”
+thumb_url=“images/seminar-images/tigr/thumbs/slide70.png”
+%}</p>
+<p>Come si vede nell’immagine per ogni singolo evento il cuore è la tabella più centrale con le caratteristiche di base dell’evento (come il numero di partecipanti, il genere di interazione, e così via). La tabella centrale rinvia poi a una serie di altre tabelle. A sinistra si vedono due tabelle con i parlanti e i luoghi del TIGR. I parlanti del TIGR sono collegati al singolo evento tramite l’elenco dei partecipanti all’evento.
+L’evento è poi associabile all’elenco dei file video, all’elenco dei file audio e all’elenco delle trascrizioni.</p>
+<h3 id="verso-la-messa-a-disposizione-in-una-piattaforma-digitale-per-la-consultazione-online">Verso la messa a disposizione in una piattaforma digitale per la consultazione online<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#verso-la-messa-a-disposizione-in-una-piattaforma-digitale-per-la-consultazione-online" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Ovviamente il repositorio è uno scenario di riuso che suppone il download dei dati sul proprio computer. Questo ha i suoi vantaggi, come la grande libertà di quello che si può fare con questi dati, e i suoi svantaggi, come quello di doversi dotare sul proprio computer degli strumenti necessari per leggere i dati scaricati.
+La piattaforma online, al contrario, è percepita da molti come più comoda perché non richiede il download di alcun strumento di lettura dei dati.</p>
+<p>Nel contesto del <a href="https://www.liri.uzh.ch/en/projects/FAIR-FI-LD.html" class="external">progetto FAIR-FI-LD<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> condotto dall’Università di Zurigo a cui partecipa tra gli altri anche l’USI (in particolare l’Istituto di Studi Italiani, o ISI), si vuole depositare il TIGR nel <a href="https://www.liri.uzh.ch/en/services/LiRI-Corpus-Platform-LCP.html" class="external">LiRI Corpus Platform (o LCP)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>. Questa piattaforma online è stata creata dal LiRI (Linguistic Research Infrastructure), un dipartimento dell’Università di Zurigo. Per saperne di più sul LiRI e di che cosa si occupa, qui è riportata la home page del sito: <a href="https://www.liri.uzh.ch/en.html" class="external">https://www.liri.uzh.ch/en.html<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>.
+Grazie alla collaborazione con <em>Linguisticbits</em>, di cui si è parlato sopra, si sta cercando di definire una procedura di upload in LCP di trascrizioni XML tokenizzate.</p>
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#footnote-label" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li id="user-content-fn-1">
+<p>Nel testo dell’articolo è presente anche il link al questionario che è stato sottoposto ai parlanti. <a href="#user-content-fnref-1" data-footnote-backref aria-label="Back to reference 1" class="data-footnote-backref internal alias">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p>Per approfondire l’utilizzo di ELAN, si veda <a href="../seminari/elantrascrizione" class="internal alias" data-slug="seminari/elantrascrizione">qui</a> <a href="#user-content-fnref-2" data-footnote-backref aria-label="Back to reference 2" class="data-footnote-backref internal alias">↩</a></p>
+</li>
+<li id="user-content-fn-3">
+<p>standard ISO per la trascrizione della lingua parlata <a href="#user-content-fnref-3" data-footnote-backref aria-label="Back to reference 3" class="data-footnote-backref internal alias">↩</a></p>
+</li>
+</ol>
+</section></article><hr/><div class="page-footer"><section id="resources" class="page-resources-section"><div class="page-resources-header"><h2 class="page-resources-title">Resources</h2><div class="page-resources-count">4 items</div></div><div class="page-resources-list"><article class="page-resource-card"><div class="page-resource-visual"><a href="https://example.com/video" target="_blank" rel="noopener noreferrer" class="page-resource-thumb-link"><img src="/img/thumb1.jpg" alt="Interview video" class="page-resource-thumbnail"/></a></div><div class="page-resource-body"><div class="page-resource-topline"><span class="page-resource-type">video</span></div><h3 class="page-resource-title">Interview video</h3><a href="https://example.com/video" target="_blank" rel="noopener noreferrer" class="page-resource-open">Open resource</a></div></article><article class="page-resource-card"><div class="page-resource-visual"><div class="page-resource-placeholder">pdf</div></div><div class="page-resource-body"><div class="page-resource-topline"><span class="page-resource-type">pdf</span></div><h3 class="page-resource-title">Slides</h3><a href="/docs/slides.pdf" target="_blank" rel="noopener noreferrer" class="page-resource-open">Open resource</a></div></article><article class="page-resource-card"><div class="page-resource-visual"><div class="page-resource-placeholder">image</div></div><div class="page-resource-body"><div class="page-resource-topline"><span class="page-resource-type">image</span></div><h3 class="page-resource-title">Poster</h3><a href="/img/poster.jpg" target="_blank" rel="noopener noreferrer" class="page-resource-open">Open resource</a></div></article><article class="page-resource-card"><div class="page-resource-visual"><a href="https://www.youtube.com/watch?v=OHgy75FqOZk" target="_blank" rel="noopener noreferrer" class="page-resource-thumb-link"><img src="https://www.wpbeginner.com/wp-content/uploads/2013/07/get-the-post-thumbnail-url-in-wordpress-og.png" alt="Watch video" class="page-resource-thumbnail"/></a></div><div class="page-resource-body"><div class="page-resource-topline"><span class="page-resource-type">video</span><span class="page-resource-primary-badge">Primary</span></div><h3 class="page-resource-title">Watch video</h3><a href="https://www.youtube.com/watch?v=OHgy75FqOZk" target="_blank" rel="noopener noreferrer" class="page-resource-open">Open resource</a></div></article></div></section></div></div><div class="right sidebar"><section class="resources-box"><h3 class="resources-box-title"><a href="#resources" class="resources-title-link"><span class="resources-title-text">Resources</span><span class="resources-title-count">4 items</span></a></h3><div class="resources-box-content"><a href="https://www.youtube.com/watch?v=OHgy75FqOZk" target="_blank" rel="noopener noreferrer" class="resource-link" aria-label="Watch video"><div class="resource-thumbnail-wrap"><img src="https://www.wpbeginner.com/wp-content/uploads/2013/07/get-the-post-thumbnail-url-in-wordpress-og.png" alt="Watch video" class="resource-thumbnail"/><span class="resource-play-overlay" aria-hidden="true"><span class="resource-play-triangle"></span></span></div></a></div></section><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-13" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#introduzione-al-corpus-tigr" data-for="introduzione-al-corpus-tigr">Introduzione al corpus TIGR</a></li><li class="depth-0"><a href="#il-progetto-infinita-perché-è-stato-creato-il-corpus-tigr" data-for="il-progetto-infinita-perché-è-stato-creato-il-corpus-tigr">Il progetto InfinIta: perché è stato creato il corpus TIGR?</a></li><li class="depth-1"><a href="#le-domande-di-ricerca" data-for="le-domande-di-ricerca">Le domande di ricerca</a></li><li class="depth-1"><a href="#perché-un--corpus-video-dellitaliano-parlato" data-for="perché-un--corpus-video-dellitaliano-parlato">Perché un  corpus video dell’italiano parlato?</a></li><li class="depth-1"><a href="#composizione-del-corpus" data-for="composizione-del-corpus">Composizione del corpus</a></li><li class="depth-0"><a href="#parlanti-del-tigr" data-for="parlanti-del-tigr">Parlanti del TIGR</a></li><li class="depth-1"><a href="#reclutamento-dei-parlanti" data-for="reclutamento-dei-parlanti">Reclutamento dei parlanti</a></li><li class="depth-1"><a href="#dati-sociolinguistici-ricavati" data-for="dati-sociolinguistici-ricavati">Dati sociolinguistici ricavati</a></li><li class="depth-0"><a href="#luoghi-dove-sono-stati-registrati-gli-eventi-del-tigr" data-for="luoghi-dove-sono-stati-registrati-gli-eventi-del-tigr">Luoghi dove sono stati registrati gli eventi del TIGR</a></li><li class="depth-0"><a href="#impostazione-tecnica-delle-registrazioni-post-produzione-e-trascrizione" data-for="impostazione-tecnica-delle-registrazioni-post-produzione-e-trascrizione">Impostazione tecnica delle registrazioni, post-produzione e trascrizione</a></li><li class="depth-1"><a href="#strumentazione-utilizzata-e-post-produzione" data-for="strumentazione-utilizzata-e-post-produzione">Strumentazione utilizzata e post-produzione</a></li><li class="depth-1"><a href="#la-trascrizione" data-for="la-trascrizione">La trascrizione</a></li><li class="depth-0"><a href="#condivisione-dei-dati" data-for="condivisione-dei-dati">Condivisione dei dati</a></li><li class="depth-1"><a href="#il-repositorio" data-for="il-repositorio">Il repositorio</a></li><li class="depth-1"><a href="#verso-la-messa-a-disposizione-in-una-piattaforma-digitale-per-la-consultazione-online" data-for="verso-la-messa-a-disposizione-in-una-piattaforma-digitale-per-la-consultazione-online">Verso la messa a disposizione in una piattaforma digitale per la consultazione online</a></li><li class="overflow-end"></li></ul></div><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../postscript.js" type="module" data-persist="true"></script></html>
