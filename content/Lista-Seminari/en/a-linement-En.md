@@ -54,7 +54,7 @@ speaker: Francesco Vitucci, Michele Zangheri %%
 
 #  "A-linement": Un tool di importazione e allineamento sottotitoli per la ricerca scientifica
 
-# Che cos'è A-linement
+# Che cos'è A-linement 
 
 **A-linement** è un software per l'analisi dei sottotitoli, che nasce nel 2022 grazie al lavoro di Francesco Vitucci, professore associato in Lingua e Linguistica Giapponese presso il Dipartimento di Lingue, Letterature e Culture Moderne dell'Alma Mater Studiorum Università di Bologna, Michele Zangheri, dottore ed esperto in traduzione televisiva e con l'aiuto di Paolo Pierruccio, informatico. A-linement viene utilizzato nell'ambito della traduzione audiovisiva interlinguistica.
 

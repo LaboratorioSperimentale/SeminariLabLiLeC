@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/Lista-Seminari/Valutazione-formativa-It.md",
+                "file": "content/Lista-Seminari/en/a-linement-En.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "Valutazione-formativa-It"
+              "title": "a-linement-En"
             }
           }
         ]
@@ -186,8 +186,17 @@
   },
   "active": "43bd43b41a9e1030",
   "lastOpenFiles": [
+    "Script-nonpub/script-all-activities.sh~",
+    "ReadMe-nonpub/README-nonpub.md",
+    "Script-nonpub/script-all-activities.sh",
+    "script-all-activities.sh~",
+    "script-all-activities.sh",
+    "ReadMe-nonpub/gitSubmodule.md",
+    "content/Lista-Seminari/Valutazione-formativa-It.md",
+    "Script-nonpub",
+    "ReadMe-nonpub/manuale_pubblicazione_quartz_github_pages.md",
     "publish-gh-pages.sh~",
-    "publish-gh-pages.sh",
+    "Script-nonpub/publish-site-on-gh-pages.sh",
     "quartz-site/quartz-4/public/topics-og-image.webp",
     "quartz-site/quartz-4/public/index-og-image.webp",
     "quartz-site/quartz-4/public/Topics/uno-og-image.webp",
@@ -201,12 +210,6 @@
     "quartz-site/quartz-4/public/topics.html",
     "quartz-site/quartz-4/public/index.html",
     "quartz-site/quartz-4/public/Topics/_intersezioni/animali+uno.html",
-    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+tre.html",
-    "quartz-site/quartz-4/public/Topics/_intersezioni/tre+uno.html",
-    "quartz-site/quartz-4/public/Topics/_intersezioni/animali+tre+uno.html",
-    "quartz-site/quartz-4/public/Topics/uno.html",
-    "quartz-site/quartz-4/public/Topics/tre.html",
-    "quartz-site/quartz-4/public/Topics/animali.html",
     "TTP-nonpub/animali+tre+uno/tigr-It.md",
     "TTP-nonpub/animali+tre+uno/smallworld-It.md",
     "TTP-nonpub/animali+tre+uno/nvivo-En.md",
@@ -227,10 +230,6 @@
     "TTP-nonpub/tre+uno/index.md",
     "TTP-nonpub/tre+uno/emozioni-It.md",
     "TTP-nonpub/tre+uno/elantrascrizione-It.md",
-    "TTP-nonpub/tre+uno/edizionidigitali-It.md",
-    "TTP-nonpub/tre+uno/catma-It.md",
-    "TTP-nonpub/tre+uno/a-linement-En.md",
-    "TTP-nonpub/tre+uno/UD-per-Corpora-L2-It.md",
-    "TTP-nonpub/tre+uno/Valutazione-formativa-It.md"
+    "TTP-nonpub/tre+uno/edizionidigitali-It.md"
   ]
 }
