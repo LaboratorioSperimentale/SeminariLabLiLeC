@@ -28,11 +28,6 @@ jobs:
       - name: Generate tag sections
         run: python3 Script-nonpub/script-generate_tag-sections.py
 
-      - name: Populate Quartz content folder
-        run: |
-          rm -rf quartz-site/quartz-4/content
-          cp -r content quartz-site/quartz-4/content
-
       - name: Set up Node 22
         uses: actions/setup-node@v4
         with:
@@ -46,7 +41,7 @@ jobs:
 
       - name: Build Quartz site
         working-directory: quartz-site/quartz-4
-        run: npx quartz build
+        run: npx quartz build -d $GITHUB_WORKSPACE/content
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
