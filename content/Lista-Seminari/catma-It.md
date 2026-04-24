@@ -1,10 +1,10 @@
 ---
 id-asset: "04"
 title: "catma"
-description: Seminario fake su lessico e ripetizione.
-videoLink: 
-- "https://www.youtube.com/watch?v=OHgy75FqOZk"  
-videoThumbnail: "https://www.wpbeginner.com/wp-content/uploads/2013/07/get-the-post-thumbnail-url-in-wordpress-og.png"  
+description: CATMA
+videoLink:
+- "https://www.youtube.com/watch?v=OHgy75FqOZk"
+videoThumbnail: "https://www.wpbeginner.com/wp-content/uploads/2013/07/get-the-post-thumbnail-url-in-wordpress-og.png"
 videoLabel: "Watch video"
 tags:
 - "#ob/tre"
@@ -14,7 +14,7 @@ layout: ["seminar", "altro"]
 seminar-date: "21.06.2024"
 seminar-title: "..."
 seminar-description: "..."
-seminar-author-codekey: 
+seminar-author-codekey:
 - codauthor1
 - codauthor2
 seminar-author-affiliation: "..."
@@ -33,16 +33,16 @@ tutorial-video-short-title: "..."
 tutorial-video-author-codkey: "codkey"
 translation: ["language", "link"]
 status: ["draft", "finished"]
-resources:  
-- type: video  
-  title: Interview video  
-  url: https://example.com/video  
-  thumbnail: /img/thumb1.jpg  
-- type: pdf  
-  title: Slides  
-  url: /docs/slides.pdf  
-- type: image  
-  title: Poster  
+resources:
+- type: video
+  title: Interview video
+  url: https://example.com/video
+  thumbnail: /img/thumb1.jpg
+- type: pdf
+  title: Slides
+  url: /docs/slides.pdf
+- type: image
+  title: Poster
   url: /img/poster.jpg
 ---
 
